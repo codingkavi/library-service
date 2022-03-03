@@ -1,15 +1,11 @@
 package com.demo.librarysystem.repository;
 
-import com.demo.librarysystem.model.Book;
-import com.demo.librarysystem.model.User;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 
 @Entity
 public class UserAccountRepository {
     @Id
-    @Column(name = "user_id")
+
     private int userId;
     @Column(name = "user_name")
     private String userName;
@@ -22,12 +18,13 @@ public class UserAccountRepository {
     public UserAccountRepository(){
 
     }
-    public UserAccountRepository(int userId, String userName,String email,int contact){
-        this.userId = userId;
+    public UserAccountRepository(int uid,String userName,String email,int contact){
+        this.userId = uid;
         this.userName = userName;
         this.email = email;
         this.contact = contact;
     }
+
     public int getUserId() {
         return userId;
     }
@@ -44,7 +41,21 @@ public class UserAccountRepository {
         this.userName = userName;
     }
 
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getContact() {
+        return contact;
+    }
+
+    public void setContact(int contact) {
+        this.contact = contact;
+    }
     /*public Date getPostedAT() {
         return postedAT;
     }

@@ -1,14 +1,12 @@
 package com.demo.librarysystem.service;
 
-import com.demo.librarysystem.model.User;
+import com.demo.librarysystem.model.Users;
 import com.demo.librarysystem.repository.UserAccountRepository;
 import com.demo.librarysystem.util.HibernateConfig;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class UserService {
     Session session;
@@ -17,35 +15,20 @@ public class UserService {
         session = HibernateConfig.getSession();
     }
 
-    public void addUser(ArrayList<User> userDetails) {
-        Iterator<User> itr = userDetails.iterator();
+    public void addUser(ArrayList<Users> usersDetails) {
+        Iterator<Users> itr = usersDetails.iterator();
         while (itr.hasNext()) {
-            User user = itr.next();
-            UserAccountRepository repo = new UserAccountRepository(user.getId(), user.getName(), user.getEmail(), user.getContact());
+            Users users = itr.next();
+            UserAccountRepository repo = new UserAccountRepository(users.getUid(), users.getUsername(), users.getUseremail(), users.getUsercontact());
             session.beginTransaction();
             session.save(repo);
-
             session.getTransaction().commit();
         }
     }
 
-        /*public int getIdByEmail(String email) {
-            session = sessionFact.openSession();
-            Query query = session.createQuery("SELECT u.user_id FROM User u WHERE u.email=:emailParam");
-            query.setParameter("emailParam", email);
-            return (int) query.uniqueResult();
-        }*/
-        /*public User getUserDetailsbyId(int id){
-            Transaction transaction = null;
-            User user = null;
-            try {
-                transaction = session.beginTransaction();
-                user = session.get(User.class, id);
-                transaction.commit();
-            } catch (Exception e) {
-                transaction.rollback();
-            }
-            return  user;
-        }*/
+
+
+
+
 
 }
