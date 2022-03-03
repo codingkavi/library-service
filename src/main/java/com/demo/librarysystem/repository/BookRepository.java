@@ -21,13 +21,11 @@ public class BookRepository {
     @Column(name = "book_ISBN")
     private int ISBN;
 
-
-
     public BookRepository() {
 
     }
 
-    public BookRepository( String authorName, String title, int ISBN){
+    public BookRepository(String title, String authorName, int ISBN){
 
         this.authorName = authorName;
         this.title = title;

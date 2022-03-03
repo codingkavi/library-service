@@ -6,25 +6,26 @@ import com.demo.librarysystem.model.User;
 import com.demo.librarysystem.repository.BookDao;
 import com.demo.librarysystem.repository.BookRepository;
 import com.demo.librarysystem.repository.UserAccountRepository;
+
 import com.demo.librarysystem.service.UserService;
 import com.demo.librarysystem.service.LibraryService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import javax.persistence.JoinColumn;
 import java.util.ArrayList;
 
 @SpringBootApplication
 public class Application {
 
 
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
-        //createBooks();
-       // createUsers();
 
-        BookDao dao = new BookDao();
-        dao.connect();
+        // createBooks();
+        // createUsers();
+        LibraryService libraryService = new LibraryService();
+        libraryService.searchBooksbyTitle();
     }
 
     private static void createBooks() {
@@ -41,7 +42,6 @@ public class Application {
         bookList.add(book3);
         bookList.add(book4);
 
-
         LibraryService libraryService = new LibraryService();
         libraryService.addBooks(bookList);
 
@@ -54,8 +54,6 @@ public class Application {
         libraryService.addBook(book);
     }
 
-
-
     private static void createUsers() {
         ArrayList<User> userDetails = new ArrayList<>();
         User user1 = new User(11,"Sanvitha","sanvi@gmail.com",9823);
@@ -67,7 +65,6 @@ public class Application {
         userDetails.add(user2);
         userDetails.add(user3);
         userDetails.add(user4);
-
 
         UserService userService = new UserService();
         userService.addUser(userDetails);

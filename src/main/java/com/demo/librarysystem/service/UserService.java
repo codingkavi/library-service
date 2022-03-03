@@ -29,23 +29,41 @@ public class UserService {
         }
     }
 
-        /*public int getIdByEmail(String email) {
-            session = sessionFact.openSession();
-            Query query = session.createQuery("SELECT u.user_id FROM User u WHERE u.email=:emailParam");
-            query.setParameter("emailParam", email);
-            return (int) query.uniqueResult();
-        }*/
-        /*public User getUserDetailsbyId(int id){
-            Transaction transaction = null;
-            User user = null;
-            try {
-                transaction = session.beginTransaction();
-                user = session.get(User.class, id);
-                transaction.commit();
-            } catch (Exception e) {
-                transaction.rollback();
+   /* public Library searchByTitle(String title)
+    {
+        int numBooks = 0;
+        for (int i = 0; i < size; i++) {
+            if (books[i].titleContains(title)) {
+                numBooks++;
             }
-            return  user;
-        }*/
+        }
 
+        Library selection = new Library(numBooks);
+
+        for (int i = 0; i < size; i++) {
+            if (books[i].titleContains(title)) {
+                selection.addBook(books[i]);
+            }
+        }
+        return selection;
+    }*/
+
+    /* public Library searchByTitle(String title)
+    {
+        int numBooks = 0;
+        for (int i = 0; i < size; i++) {
+            if (books[i].titleContains(title)) {
+                numBooks++;
+            }
+        }
+
+        Library selection = new Library(numBooks);
+
+        for (int i = 0; i < size; i++) {
+            if (books[i].titleContains(title)) {
+                selection.addBook(books[i]);
+            }
+        }
+        return selection;
+    }*/
 }

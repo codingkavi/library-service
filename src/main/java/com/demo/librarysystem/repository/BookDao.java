@@ -9,7 +9,7 @@ public class BookDao  {
     Statement stmt = null;
     PreparedStatement pstmt;
 
-    public void connect(){
+    public void connect(String bookSearch){
         try {
             Class.forName("org.h2.Driver");
             conn = DriverManager.getConnection("jdbc:h2:file:/Users/kavi/h2db/in-memory", "sa", "");
@@ -40,7 +40,7 @@ public class BookDao  {
 
             }*/
             pstmt = conn.prepareStatement("Select * from BookRepository where author_name = ?");
-            pstmt.setString(1,"Suzuki");
+            pstmt.setString(1, bookSearch);
             ResultSet rs = pstmt.executeQuery();
 
             String data;
