@@ -4,6 +4,7 @@ package com.demo.librarysystem;
 import com.demo.librarysystem.model.Book;
 import com.demo.librarysystem.model.User;
 import com.demo.librarysystem.repository.BookDao;
+import com.demo.librarysystem.repository.BookRepository;
 import com.demo.librarysystem.repository.UserAccountRepository;
 import com.demo.librarysystem.service.UserService;
 import com.demo.librarysystem.service.LibraryService;
@@ -19,8 +20,9 @@ public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
-        createBooks();
+        //createBooks();
        // createUsers();
+
         BookDao dao = new BookDao();
         dao.connect();
     }
@@ -70,4 +72,6 @@ public class Application {
         UserService userService = new UserService();
         userService.addUser(userDetails);
     }
+
 }
+
