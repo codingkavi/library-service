@@ -3,41 +3,34 @@ package com.demo.librarysystem.model;
 
 public class Books {
     int bookId;
-    String booktitle;
     String author;
+    String booktitle;
     String publishername;
     int publishedyear;
     int isbn;
     int noOfPages;
     String key;
+    String genre;
 
     public Books() {}
 
-    public Books(String author, String booktitle, int isbn, int noOfPages,String key,String publishername, int publishedyear) {
-
-        this.booktitle = booktitle;
+    public Books(String author, String booktitle, int isbn, int noOfPages,String key,String publishername, int publishedyear,String genre) {
         this.author = author;
+        this.booktitle = booktitle;
         this.isbn = isbn;
         this.noOfPages = noOfPages;
         this.key = key;
         this.publishername = publishername;
         this.publishedyear = publishedyear;
-    }
-
-    public int getBookId() {
-        return bookId;
+        this.genre = genre;
     }
 
     public void setBookId(int bookId) {
         this.bookId = bookId;
     }
 
-    public String getTitle() {
-        return booktitle;
-    }
-
-    public void setTitle(String booktitle) {
-        this.booktitle = booktitle;
+    public int getBookId() {
+        return bookId;
     }
 
     public String getAuthor() {
@@ -46,6 +39,14 @@ public class Books {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getTitle() {
+        return booktitle;
+    }
+
+    public void setTitle(String booktitle) {
+        this.booktitle = booktitle;
     }
 
     public int getIsbn() {
@@ -86,5 +87,13 @@ public class Books {
 
     public void setPublishedyear(int publishedyear) {
         this.publishedyear = publishedyear;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 }

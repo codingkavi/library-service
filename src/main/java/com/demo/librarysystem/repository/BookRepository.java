@@ -41,13 +41,6 @@ public class BookRepository {
         this.publishedyear = publishedyear;
     }
 
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
-    }
-
-    public int getBookId() {
-        return bookId;
-    }
 
     public void setAuthorName(String authorName) {
         this.authorName = authorName;
@@ -107,14 +100,5 @@ public class BookRepository {
 
 
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                //", bookId=" + bookId +
-                ", authorName='" + authorName + '\'' +
-                ", title='" + title + '\'' +
-                ", ISBN=" + ISBN +
 
-                '}';
-    }
 }
