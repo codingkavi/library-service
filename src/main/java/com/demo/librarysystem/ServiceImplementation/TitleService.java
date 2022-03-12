@@ -9,17 +9,21 @@ import java.util.Scanner;
 public class TitleService implements LibraryServ {
 
     @Override
-    public void searchBooksbyTitle() throws SQLException {
+    public void findBooks()  {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter a Title to search : ");
         String bookSearch = input.nextLine();
-        searchbyTitle(bookSearch);
+        try {
+            searchbyTitle(bookSearch);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void searchbyTitle(String bookSearch) throws SQLException {
-        Connection conn = null;
+
         ConnectDao dao = new ConnectDao();
-        dao.connect();
+        Connection conn = dao.connect();
         PreparedStatement pstmt = null;
         try {
             pstmt = conn.prepareStatement("Select * from BookRepository where UPPER(book_title) like '%' || UPPER(?) || '%'");
@@ -42,23 +46,5 @@ public class TitleService implements LibraryServ {
         }
     }
 
-    @Override
-    public void searchBooksbyAuthor() {
 
-    }
-
-    @Override
-    public void searchBooksbykeyword() {
-
-    }
-
-    @Override
-    public void searchBooksbynoofPages() {
-
-    }
-
-    @Override
-    public void searchBooksbyPublisher() {
-
-    }
 }

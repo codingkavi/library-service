@@ -2,7 +2,6 @@ package com.demo.librarysystem.ServiceImplementation;
 
 import com.demo.librarysystem.repository.ConnectDao;
 import com.demo.librarysystem.service.LibraryServ;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,18 +9,23 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class PublisherService implements LibraryServ {
+
     @Override
-    public void searchBooksbyPublisher() throws SQLException {
+    public void findBooks(){
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the Publisher name to search : ");
         String bookSearch = input.nextLine();
-        searchbyPublisher(bookSearch);
+        try {
+            searchbyPublisher(bookSearch);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     public void searchbyPublisher(String bookSearch) throws SQLException {
-        Connection conn = null;
+
         ConnectDao dao = new ConnectDao();
-        dao.connect();
-        PreparedStatement pstmt = conn.prepareStatement("Select * from BookRepository where Publisher = ?");
+        Connection conn = dao.connect();
+        PreparedStatement pstmt = conn.prepareStatement("Select * from BookRepository where LOWER(Publisher) like  '%'  || LOWER(?) || '%'");
         pstmt.setString(1,bookSearch);
         ResultSet rs = pstmt.executeQuery();
         while(rs.next()){
@@ -37,23 +41,4 @@ public class PublisherService implements LibraryServ {
         }
     }
 
-    @Override
-    public void searchBooksbyAuthor() {
-    System.out.println("hi");
-    }
-
-    @Override
-    public void searchBooksbykeyword() {
-
-    }
-
-    @Override
-    public void searchBooksbynoofPages() {
-
-    }
-
-    @Override
-    public void searchBooksbyTitle() {
-
-    }
 }

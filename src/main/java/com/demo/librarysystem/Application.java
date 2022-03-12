@@ -1,13 +1,13 @@
 package com.demo.librarysystem;
 
-
+import com.demo.librarysystem.ServiceImplementation.*;
 import com.demo.librarysystem.model.Books;
 import com.demo.librarysystem.model.Users;
+import com.demo.librarysystem.service.LibraryServ;
 import com.demo.librarysystem.service.UserService;
 import com.demo.librarysystem.service.LibraryService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,13 +15,73 @@ import java.util.Scanner;
 @SpringBootApplication
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         SpringApplication.run(Application.class, args);
         //createBooks();
         //createUsers();
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.println("Welcome User!");
+            System.out.println("To find books, Please Select the below options");
+            System.out.println("1.Enter the Author to search");
+            System.out.println("2.Enter the Title to search");
+            System.out.println("3.Enter the Publisher to search");
+            System.out.println("4.Enter the Keyword to search");
+            System.out.println("5.Enter the Page range to search");
+            System.out.println("6.Enter the Year to search");
+            System.out.println("7.Exit");
+
+            System.out.println("Enter your option");
+
+            int option = sc.nextInt();
+            switch (option) {
+                case 1:
+                    LibraryServ libraryServ = new AuthorService();
+                    libraryServ.findBooks();
+                    sc.nextLine();
+                    break;
+                case 2:
+                    LibraryServ libraryServ1 = new TitleService();
+                    libraryServ1.findBooks();
+                    sc.nextLine();
+                    break;
+                case 3:
+                    LibraryServ libraryServ2 = new PublisherService();
+                    libraryServ2.findBooks();
+                    sc.nextLine();
+                    break;
+                case 4:
+                    LibraryServ libraryServ3 = new KeywordService();
+                    libraryServ3.findBooks();
+                    sc.nextLine();
+                    break;
+                case 5:
+                    LibraryServ libraryServ4 = new NoofPagesService();
+                    libraryServ4.findBooks();
+                    sc.nextLine();
+                    break;
+                case 6:
+                    LibraryServ libraryServ5 = new YearService();
+                    libraryServ5.findBooks();
+                    sc.nextLine();
+                    break;
+                case 7:
+                    System.exit(0);
+                default:
+                    System.out.println("Wrong option,try again");
+            }
+
+            System.out.println("Do you wish to continue yes or no");
+            String c = sc.nextLine();
+            if(c.equalsIgnoreCase("yes"))
+                continue;
+            else
+                System.exit(0);
+
+
+        }
+
     }
-
-
     private static void createBooks() {
         ArrayList<Books> booksList = new ArrayList<>();
         // Static data for testing
