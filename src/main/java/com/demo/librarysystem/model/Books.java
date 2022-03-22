@@ -1,4 +1,5 @@
 package com.demo.librarysystem.model;
+import java.util.List;
 
 
 public class Books {
@@ -11,6 +12,8 @@ public class Books {
     int noOfPages;
     String key;
     String genre;
+    List<Books> books;
+
 
     public Books() {}
 
@@ -95,5 +98,13 @@ public class Books {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public List<Books> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Books> books) {
+        this.books = books;
     }
 }

@@ -19,7 +19,7 @@ public class UserService {
         Iterator<Users> itr = usersDetails.iterator();
         while (itr.hasNext()) {
             Users users = itr.next();
-            UserAccountRepository repo = new UserAccountRepository(users.getUid(), users.getUsername(), users.getUseremail(), users.getUsercontact());
+            UserAccountRepository repo = new UserAccountRepository(users.getUserId(), users.getFirstname(), users.getLastname(), users.getPassword(), users.getEmail(), users.getAddress(), users.getBirthdate(), users.getContact());
             session.beginTransaction();
             session.save(repo);
             session.getTransaction().commit();

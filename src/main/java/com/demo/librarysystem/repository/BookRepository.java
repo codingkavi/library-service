@@ -26,10 +26,6 @@ public class BookRepository {
     private String key;
 
 
-    /*public BookRepository() {
-
-    }*/
-
     public BookRepository(String authorName, String title, int ISBN, int noOfPages,String key, String publishername,int publishedyear){
 
         this.authorName = authorName;
@@ -40,7 +36,6 @@ public class BookRepository {
         this.publishername = publishername;
         this.publishedyear = publishedyear;
     }
-
 
     public void setAuthorName(String authorName) {
         this.authorName = authorName;
@@ -97,8 +92,5 @@ public class BookRepository {
     public void setKey(String key) {
         this.key = key;
     }
-
-
-
 
 }

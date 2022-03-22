@@ -14,18 +14,16 @@ public class LibraryService {
         session = HibernateConfig.getSession();
     }
 
-    public void addBook(Books books) {
-        BookRepository bookRepo = new BookRepository(books.getAuthor(), books.getTitle(), books.getIsbn(), books.getNoOfPages(),books.getKey(), books.getPublishername(), books.getPublishedyear());
-        session.beginTransaction();
-        session.save(bookRepo);
-        session.getTransaction().commit();
-    }
-
     public void addBooks(ArrayList<Books> booksList) {
         Iterator<Books> itr = booksList.iterator();
+
         while(itr.hasNext()) {
             Books books = itr.next();
-            addBook(books);
+            BookRepository bookRepo = new BookRepository(books.getAuthor(), books.getTitle(), books.getIsbn(), books.getNoOfPages(),books.getKey(), books.getPublishername(), books.getPublishedyear());
+            session.beginTransaction();
+            session.save(bookRepo);
+            session.getTransaction().commit();
+
         }
     }
 }

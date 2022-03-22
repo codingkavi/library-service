@@ -1,11 +1,15 @@
 package com.demo.librarysystem;
 
 import com.demo.librarysystem.ServiceImplementation.*;
+import com.demo.librarysystem.Validations.PasswordValidation;
+import com.demo.librarysystem.Validations.PhoneValidation;
 import com.demo.librarysystem.model.Books;
 import com.demo.librarysystem.model.Users;
 import com.demo.librarysystem.service.LibraryServ;
-import com.demo.librarysystem.service.UserService;
 import com.demo.librarysystem.service.LibraryService;
+import com.demo.librarysystem.service.UserLogin;
+import com.demo.librarysystem.service.UserService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.sql.SQLException;
@@ -15,25 +19,28 @@ import java.util.Scanner;
 @SpringBootApplication
 public class Application {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, JsonProcessingException {
         SpringApplication.run(Application.class, args);
+
         //createBooks();
         //createUsers();
+
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("Welcome User!");
-            System.out.println("To find books, Please Select the below options");
-            System.out.println("1.Enter the Author to search");
-            System.out.println("2.Enter the Title to search");
-            System.out.println("3.Enter the Publisher to search");
-            System.out.println("4.Enter the Keyword to search");
-            System.out.println("5.Enter the Page range to search");
-            System.out.println("6.Enter the Year to search");
-            System.out.println("7.Exit");
+            System.out.println("To find books, please select from one of the below options");
+            System.out.println("1. Author");
+            System.out.println("2. Title");
+            System.out.println("3. Publisher");
+            System.out.println("4. Keyword");
+            System.out.println("5. Page range");
+            System.out.println("6. Year");
+            System.out.println("7. Exit");
 
-            System.out.println("Enter your option");
+            System.out.println("Enter your option: ");
 
             int option = sc.nextInt();
+
             switch (option) {
                 case 1:
                     LibraryServ libraryServ = new AuthorService();
@@ -67,6 +74,16 @@ public class Application {
                     break;
                 case 7:
                     System.exit(0);
+                case 8:
+                    UserLogin userLogin = new UserLogin();
+                    userLogin.register();
+                    sc.nextLine();
+                    break;
+                case 9:
+                    PhoneValidation phoneValidation = new PhoneValidation();
+                    phoneValidation.isValid123();
+                    sc.nextLine();
+                    break;
                 default:
                     System.out.println("Wrong option,try again");
             }
@@ -77,11 +94,10 @@ public class Application {
                 continue;
             else
                 System.exit(0);
-
-
         }
-
     }
+
+
     private static void createBooks() {
         ArrayList<Books> booksList = new ArrayList<>();
         // Static data for testing
@@ -105,24 +121,18 @@ public class Application {
         LibraryService libraryService = new LibraryService();
         libraryService.addBooks(booksList);
 
-        Books books = new Books();
-        books.setBookId(123);
-        books.setAuthor("J.K.Rowling");
-        books.setTitle("Harry Potter Novels");
-        books.setIsbn(12345);
 
-        libraryService.addBook(books);
     }
 
     private static void createUsers() {
         ArrayList<Users> usersDetails = new ArrayList<>();
-        Users users1 = new Users(11,"Sanvitha","sanvi@gmail.com",9823);
-        Users users2 = new Users(12,"Anvith","Anvith@gmail.com",9723);
-        Users users3 = new Users(13,"Kavitha","kavitha@gmail.com",9623);
-        Users users4 = new Users(14,"Sankar","Sankar@gmail.com",9523);
-        Users user5 = new Users(15,"Kala","kala@gmail.com",98765);
-        Users user6 = new Users(16,"Bala","Bala@gmail.in",97643);
-        Users user7 = new Users(17,"Dhandapani","Dhandapani@gmail.com",98654);
+        Users users1 = new Users("San123","Sanvitha","Julie","aaa","sanvi@gmail.com","Georgia,Atlanta -30909","3/02/1998",9823);
+        Users users2 = new Users("An142","Anvith","Lucy","bbb","Anvith@gmail.com","NewJersey,Fords - 80060","31/1/1980",9723);
+        Users users3 = new Users("Ka123","Kavitha","Antony","ccc","kavitha@gmail.com","California -30202","05/12/1992",9623);
+        Users users4 = new Users("Fe321","Sankar","Federick","abc","Sankar@gmail.com","Pennysylvania -87097","08/07/1983",9523);
+        Users user5 = new Users("Rich123","Kala","Richard","ddd","kala@gmail.com","Arizona - 30290","31/08/1981",98765);
+        Users user6 = new Users("Car123","Bala","Carl","eee","Bala@gmail.in","Florida - 20302","12/1/1985",97643);
+        Users user7 = new Users("Jos321","Dhandapani","Joseph","fff","Dhandapani@gmail.com","North Carolina -30405","10/11/1998",98654);
 
         usersDetails.add(users1);
         usersDetails.add(users2);
@@ -137,4 +147,3 @@ public class Application {
     }
 
 }
-
