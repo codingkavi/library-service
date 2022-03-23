@@ -1,14 +1,17 @@
 package com.demo.librarysystem.util;
 
+import antlr.collections.List;
 import com.demo.librarysystem.repository.ConnectDao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
+import java.util.*;
 
 public class CreateUsers {
+    Scanner sc;
+    HashMap<String,String> hashMap = new HashMap();
     public void create(String userId) throws SQLException {
         ConnectDao dao = new ConnectDao();
         Connection conn = dao.connect();
@@ -17,42 +20,51 @@ public class CreateUsers {
         String query = "Select user_Name from UserAccountRepository where user_Name = '" + userId + "' ";
         pstmt = conn.prepareStatement(query);
         ResultSet rs = pstmt.executeQuery();
-        Scanner sc = new Scanner(System.in);
+
+        sc = new Scanner(System.in);
+
+        String[] message = {"First Name", "Last Name", "User Id", "password", "email",
+                "address", "dateofbirth", "contact"};
 
         if (!rs.next()) {
-            System.out.println("Enter the FirstName : ");
-            String firstname = sc.nextLine();
-            System.out.println("Enter the LastName : ");
-            String lastname = sc.nextLine();
-            System.out.println("Enter the Password : ");
-            String password = sc.nextLine();
-            System.out.println("Enter the Email : ");
-            String email = sc.nextLine();
-            System.out.println("Enter the Address : ");
-            String address = sc.nextLine();
-            System.out.println("Enter the DateOfBirth : ");
-            String dateofbirth = sc.nextLine();
-            System.out.println("Enter the Contact number  : ");
-            int contact = sc.nextInt();
+
+            int i = 0;
+            while(i < message.length) {
+                String input = getInput(message[i]);
+                System.out.println(message[i] + " : " + input);
+                i++;
+            }
+
+            for(Map.Entry<String,String> m : hashMap.entrySet()){
+                System.out.println(m.getKey() +" " + m.getValue());
+            }
+
 
             String sql = "INSERT INTO UserAccountRepository"
                     + "(user_Name,first_name, last_name,password,user_email,address,DateofBirth,user_contact) VALUES"
                     + "(?,?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
 
-               preparedStatement.setString(1, userId);
-                preparedStatement.setString(2, firstname);
-                preparedStatement.setString(3, lastname);
-                preparedStatement.setString(4, password);
-                preparedStatement.setString(5, email);
-                preparedStatement.setString(6, address);
-                preparedStatement.setString(7, dateofbirth);
-                preparedStatement.setInt(8, contact);
+               preparedStatement.setString(1, hashMap.get("User Id"));
+                preparedStatement.setString(2, hashMap.get("First Name"));
+                preparedStatement.setString(3, hashMap.get("Last Name"));
+                preparedStatement.setString(4, hashMap.get("password"));
+                preparedStatement.setString(5, hashMap.get("email"));
+                preparedStatement.setString(6, hashMap.get("address"));
+                preparedStatement.setString(7, hashMap.get("dateofbirth"));
+                preparedStatement.setString(8, hashMap.get("contact"));
                 preparedStatement.executeUpdate();
             }
         else{
             System.out.println("User Exists with id : " + userId);
         }
+    }
+
+    private String getInput(String message) {
+        System.out.println("Enter the " + message + " : ");
+        String input = sc.nextLine();
+        hashMap.put(message, input);
+        return input;
     }
 }
 
