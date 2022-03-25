@@ -1,14 +1,12 @@
 package com.demo.librarysystem.model;
 
-import java.util.Date;
-
 public class Users {
+
     String userId;
     String firstName;
     String lastName;
     String password;
     String email;
-    //set[A-Z].+([1-9]+,.*,.*)
     int contact;
     String address;
     String birthDate;

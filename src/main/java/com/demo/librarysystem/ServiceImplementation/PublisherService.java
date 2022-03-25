@@ -12,6 +12,7 @@ public class PublisherService implements LibraryServ {
 
     @Override
     public void findBooks(){
+
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the Publisher name to search : ");
         String bookSearch = input.nextLine();
@@ -21,6 +22,7 @@ public class PublisherService implements LibraryServ {
             e.printStackTrace();
         }
     }
+
     public void searchbyPublisher(String bookSearch) throws SQLException {
 
         ConnectDao dao = new ConnectDao();
@@ -40,5 +42,4 @@ public class PublisherService implements LibraryServ {
             System.out.println(data);
         }
     }
-
 }

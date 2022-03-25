@@ -13,25 +13,30 @@ public class KeywordService implements LibraryServ {
 
     @Override
     public void findBooks()  {
+
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the keyword to search a book : ");
         String key = input.nextLine();
+
         try {
             keySearch(key);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
     public void keySearch(String keyword) throws SQLException {
 
         ConnectDao dao = new ConnectDao();
         Connection conn = dao.connect();
         PreparedStatement pstmt = null;
+
         try {
             pstmt = conn.prepareStatement("Select * from BookRepository where LOWER(key_search) like  '%'  || LOWER(?) || '%'");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         pstmt.setString(1,  keyword);
         ResultSet rs = pstmt.executeQuery();
 
@@ -47,8 +52,4 @@ public class KeywordService implements LibraryServ {
             System.out.println(data);
         }
     }
-
-
-
-
 }

@@ -10,6 +10,7 @@ public class TitleService implements LibraryServ {
 
     @Override
     public void findBooks()  {
+
         Scanner input = new Scanner(System.in);
         System.out.println("Enter a Title to search : ");
         String bookSearch = input.nextLine();

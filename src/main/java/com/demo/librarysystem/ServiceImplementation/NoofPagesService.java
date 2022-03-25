@@ -13,6 +13,7 @@ public class NoofPagesService implements LibraryServ {
 
     @Override
     public void findBooks(){
+
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the Page Range to search : ");
         int input1 = Integer.parseInt(input.nextLine());
@@ -23,6 +24,7 @@ public class NoofPagesService implements LibraryServ {
             e.printStackTrace();
         }
     }
+
     public void searchbynoofPages(int input1, int input2) throws SQLException {
 
         ConnectDao dao = new ConnectDao();

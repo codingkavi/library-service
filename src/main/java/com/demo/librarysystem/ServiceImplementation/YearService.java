@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class YearService implements LibraryServ {
     @Override
     public void findBooks()  {
+
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the Publisher name to search : ");
         int bookSearch = input.nextInt();
@@ -20,9 +21,10 @@ public class YearService implements LibraryServ {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
+
     public void searchbyYear(int bookSearch) throws SQLException {
+
         ConnectDao dao = new ConnectDao();
         Connection conn = dao.connect();
         PreparedStatement pstmt = null;
@@ -46,7 +48,5 @@ public class YearService implements LibraryServ {
             System.out.println(data);
         }
     }
-
-
 }
 

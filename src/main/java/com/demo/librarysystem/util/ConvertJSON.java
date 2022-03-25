@@ -13,6 +13,7 @@ import java.util.Map;
 public class ConvertJSON {
 
     public List<Map<String, Object>> getResult(ResultSet resultSet) throws SQLException {
+
         ArrayList<Map<String,Object>> entities = new ArrayList<>();
         while(resultSet.next()){
             entities.add(getData(resultSet));
@@ -21,6 +22,7 @@ public class ConvertJSON {
     }
    
     public Map<String, Object> getData(ResultSet resultSet) throws SQLException{
+
         ResultSetMetaData metaData = resultSet.getMetaData();
         int columnCount = metaData.getColumnCount();
         Map<String,Object> result = new HashMap<>();

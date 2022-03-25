@@ -18,18 +18,11 @@ public class AuthorService implements LibraryServ {
 
     @Override
     public void findBooks() throws SQLException {
+
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the author name to search :");
         String bookSearch = input.nextLine();
-        //try {
-           searchbyAuthor(bookSearch);
-            //System.out.println(rs);
-            /*ConvertJSON c = new ConvertJSON();
-            List<Map<String,Object>> resultMap =  c.getResult(rs);
-            System.out.println(resultMap);
-        } catch (SQLException | JsonProcessingException e) {
-            e.printStackTrace();
-        }*/
+        searchbyAuthor(bookSearch);
     }
 
     public void searchbyAuthor(String bookSearch) throws SQLException {
@@ -40,7 +33,7 @@ public class AuthorService implements LibraryServ {
         pstmt = conn.prepareStatement("Select * from BookRepository where LOWER(author_name) like  '%'  || LOWER(?) || '%'");
         pstmt.setString(1, bookSearch);
         ResultSet rs = pstmt.executeQuery();
-        //return rs;
+
         while (rs.next()) {
             int bookId = rs.getInt("book_id");
             int ISBN = rs.getInt("book_ISBN");

@@ -9,7 +9,9 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateConfig {
+
     public static Session getSession() {
+
         Configuration con = new Configuration().configure("hibernate.xml")
                 .addAnnotatedClass(UserAccountRepository.class)
                 .addAnnotatedClass(BookRepository.class);
