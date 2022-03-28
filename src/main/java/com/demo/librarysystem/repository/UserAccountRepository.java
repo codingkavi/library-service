@@ -4,9 +4,10 @@ import javax.persistence.*;
 
 @Entity
 public class UserAccountRepository {
+
     @Id
     @Column(name = "user_Name")
-    private String userId;
+    private String userName;
     @Column(name = "first_name")
     private String firstname;
     @Column(name = "last_name")
@@ -26,9 +27,9 @@ public class UserAccountRepository {
     public UserAccountRepository(){
 
     }
-    public UserAccountRepository(String userId,String firstname, String lastname, String password, String email, String address, String birthdate, int contact){
+    public UserAccountRepository(String userName,String firstname, String lastname, String password, String email, String address, String birthdate, int contact){
 
-        this.userId = userId;
+        this.userName = userName;
         this.firstname = firstname;
         this.lastname = lastname;
         this.password = password;
@@ -39,12 +40,12 @@ public class UserAccountRepository {
 
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getFirstname() {
@@ -102,22 +103,6 @@ public class UserAccountRepository {
     public void setContact(int contact) {
         this.contact = contact;
     }
-    /*public Date getPostedAT() {
-        return postedAT;
-    }
-
-    public void setPostedAT(Date postedAT) {
-        this.postedAT = postedAT;
-    }*/
-    /*public Book getBook() {
-        return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
-    }*/
-
-
 
 
 }

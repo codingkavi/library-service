@@ -1,6 +1,4 @@
 package com.demo.librarysystem.util;
-import com.fasterxml.jackson.core.JsonProcessingException;
-
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;

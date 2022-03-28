@@ -2,7 +2,7 @@ package com.demo.librarysystem.model;
 
 public class Users {
 
-    String userId;
+    String userName;
     String firstName;
     String lastName;
     String password;
@@ -12,8 +12,9 @@ public class Users {
     String birthDate;
 
 
-    public Users(String userId,String firstname, String lastname, String password, String email, String address, String birthdate, int contact) {
-        this.userId = userId;
+    public Users(String userName,String firstname, String lastname, String password, String email, String address, String birthdate, int contact) {
+
+        this.userName = userName;
         this.firstName = firstname;
         this.lastName = lastname;
         this.password = password;
@@ -23,12 +24,12 @@ public class Users {
         this.contact = contact;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getFirstname() {

@@ -1,7 +1,6 @@
 package com.demo.librarysystem;
 
 import com.demo.librarysystem.ServiceImplementation.*;
-import com.demo.librarysystem.Validations.PasswordValidation;
 import com.demo.librarysystem.Validations.PhoneValidation;
 import com.demo.librarysystem.model.Books;
 import com.demo.librarysystem.model.Users;
@@ -101,22 +100,22 @@ public class Application {
     private static void createBooks() {
         ArrayList<Books> booksList = new ArrayList<>();
         // Static data for testing
-        Books books1 = new Books( "J.K.Rowling", "Harry Potter", 123,40,"Harry","Bloomsbury Publishing",1983,"Fantasy");
-        Books books2 = new Books( "Peggy Parish", "Amelia Bedelia", 567,30,"Amelia","Harper & Row",1963,"Children's picture book,comedy");
-        Books books3 = new Books( "Norm Feuti", "Beak & Ally", 890,50,"Beak","HarperCollins",1981,"Comics");
-        Books books4 = new Books( "Mo O'hara", "The Zombie Goldfish", 342,70,"Zombie","MacMillan",2011,"Fantasy");
-        Books books5 = new Books("Ursula","A Wizard Of EarthSea",432,55,"Wizard","Parnassus",1968,"Fantasy");
-        Books books6 = new Books("Micheal Dahl","Troll Hunters",987,45,"Troll","Print",2012,"Adventure");
-        Books books7 = new Books("Kathryn","World Atlas",657,75,"World","Hammond",2013,"Sc-Fi");
+        final Books BOOK1 = new Books( "J.K.Rowling", "Harry Potter", 123,40,"Harry","Bloomsbury Publishing",1983,"Fantasy");
+        final Books BOOK2 = new Books( "Peggy Parish", "Amelia Bedelia", 567,30,"Amelia","Harper & Row",1963,"Children's picture book,comedy");
+        final Books BOOK3 = new Books( "Norm Feuti", "Beak & Ally", 890,50,"Beak","HarperCollins",1981,"Comics");
+        final Books BOOK4 = new Books( "Mo O'hara", "The Zombie Goldfish", 342,70,"Zombie","MacMillan",2011,"Fantasy");
+        final Books BOOK5 = new Books("Ursula","A Wizard Of EarthSea",432,55,"Wizard","Parnassus",1968,"Fantasy");
+        final Books BOOK6 = new Books("Micheal Dahl","Troll Hunters",987,45,"Troll","Print",2012,"Adventure");
+        final Books BOOK7 = new Books("Kathryn","World Atlas",657,75,"World","Hammond",2013,"Sc-Fi");
 
         //adding the objects into ArrayList
-        booksList.add(books1);
-        booksList.add(books2);
-        booksList.add(books3);
-        booksList.add(books4);
-        booksList.add(books5);
-        booksList.add(books6);
-        booksList.add(books7);
+        booksList.add(BOOK1);
+        booksList.add(BOOK2);
+        booksList.add(BOOK3);
+        booksList.add(BOOK4);
+        booksList.add(BOOK5);
+        booksList.add(BOOK6);
+        booksList.add(BOOK7);
 
         LibraryService libraryService = new LibraryService();
         libraryService.addBooks(booksList);
@@ -126,21 +125,21 @@ public class Application {
 
     private static void createUsers() {
         ArrayList<Users> usersDetails = new ArrayList<>();
-        Users users1 = new Users("San123","Sanvitha","Julie","aaa","sanvi@gmail.com","Georgia,Atlanta -30909","3/02/1998",9823);
-        Users users2 = new Users("An142","Anvith","Lucy","bbb","Anvith@gmail.com","NewJersey,Fords - 80060","31/1/1980",9723);
-        Users users3 = new Users("Ka123","Kavitha","Antony","ccc","kavitha@gmail.com","California -30202","05/12/1992",9623);
-        Users users4 = new Users("Fe321","Sankar","Federick","abc","Sankar@gmail.com","Pennysylvania -87097","08/07/1983",9523);
-        Users user5 = new Users("Rich123","Kala","Richard","ddd","kala@gmail.com","Arizona - 30290","31/08/1981",98765);
-        Users user6 = new Users("Car123","Bala","Carl","eee","Bala@gmail.in","Florida - 20302","12/1/1985",97643);
-        Users user7 = new Users("Jos321","Dhandapani","Joseph","fff","Dhandapani@gmail.com","North Carolina -30405","10/11/1998",98654);
+        final Users USERS1 = new Users("San123","Sanvitha","Julie","aaa","sanvi@gmail.com","Georgia,Atlanta -30909","3/02/1998",9823);
+        final Users USERS2 = new Users("An142","Anvith","Lucy","bbb","Anvith@gmail.com","NewJersey,Fords - 80060","31/1/1980",9723);
+        final Users USERS3 = new Users("Ka123","Kavitha","Antony","ccc","kavitha@gmail.com","California -30202","05/12/1992",9623);
+        final Users USERS4 = new Users("Fe321","Sankar","Federick","abc","Sankar@gmail.com","Pennysylvania -87097","08/07/1983",9523);
+        final Users USERS5 = new Users("Rich123","Kala","Richard","ddd","kala@gmail.com","Arizona - 30290","31/08/1981",98765);
+        final Users USERS6 = new Users("Car123","Bala","Carl","eee","Bala@gmail.in","Florida - 20302","12/1/1985",97643);
+        final Users USERS7 = new Users("Jos321","Dhandapani","Joseph","fff","Dhandapani@gmail.com","North Carolina -30405","10/11/1998",98654);
 
-        usersDetails.add(users1);
-        usersDetails.add(users2);
-        usersDetails.add(users3);
-        usersDetails.add(users4);
-        usersDetails.add(user5);
-        usersDetails.add(user6);
-        usersDetails.add(user7);
+        usersDetails.add(USERS1);
+        usersDetails.add(USERS2);
+        usersDetails.add(USERS3);
+        usersDetails.add(USERS4);
+        usersDetails.add(USERS5);
+        usersDetails.add(USERS6);
+        usersDetails.add(USERS7);
 
         UserService userService = new UserService();
         userService.addUser(usersDetails);

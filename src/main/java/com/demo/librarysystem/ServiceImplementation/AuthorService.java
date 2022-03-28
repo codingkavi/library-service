@@ -1,18 +1,12 @@
 package com.demo.librarysystem.ServiceImplementation;
 
-import com.demo.librarysystem.model.Books;
+
 import com.demo.librarysystem.repository.ConnectDao;
 import com.demo.librarysystem.service.LibraryServ;
-import com.demo.librarysystem.util.ConvertJSON;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.sql.*;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
-
-import static org.apache.logging.log4j.message.MapMessage.MapFormat.JSON;
 
 public class AuthorService implements LibraryServ {
 

@@ -2,7 +2,6 @@ package com.demo.librarysystem.ServiceImplementation;
 
 import com.demo.librarysystem.repository.ConnectDao;
 import com.demo.librarysystem.service.LibraryServ;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +9,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class YearService implements LibraryServ {
+
     @Override
     public void findBooks()  {
 
@@ -23,7 +23,7 @@ public class YearService implements LibraryServ {
         }
     }
 
-    public void searchbyYear(int bookSearch) throws SQLException {
+    public void searchbyYear(int bookSearch) throws SQLException,NullPointerException {
 
         ConnectDao dao = new ConnectDao();
         Connection conn = dao.connect();

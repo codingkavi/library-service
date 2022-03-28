@@ -6,56 +6,46 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-public class CreateUsers {
+public class CreateUsers implements UserConst{
 
-        Scanner sc;
-        HashMap<String,String> hashMap = new HashMap();
+        static Scanner sc;
+        static HashMap<String,String> hashMap = new HashMap();
+        static ConnectDao dao = new ConnectDao();
+        static Connection conn = dao.connect();
+        static PreparedStatement pstmt;
+        static ResultSet rs;
 
-        public void create(String userId) throws SQLException {
+
+        public static void create(String userName) throws SQLException {
 
             sc = new Scanner(System.in);
-            ConnectDao dao = new ConnectDao();
-            Connection conn = dao.connect();
-            PreparedStatement pstmt;
-            String query = "Select user_Name from UserAccountRepository where user_Name = '" + userId + "' ";
-            pstmt = conn.prepareStatement(query);
-            ResultSet rs = pstmt.executeQuery();
+            pstmt = conn.prepareStatement(QUERY_SELECT_USERNAME);
+            pstmt.setString(1,userName);
+            rs = pstmt.executeQuery();
+            if(!rs.next()) {
+                int i = 0;
+                while (i < MESSAGE.length) {
+                    String input = getInput(MESSAGE[i]);
+                    System.out.println(MESSAGE[i] + " : " + input);
+                    i++;
+                }
+                PreparedStatement preparedStatement = conn.prepareStatement(QUERY_INSERT_FOR_LOGIN);
 
-            String[] message = {"First Name", "Last Name", "User Id", "password", "email",
-                    "address", "dateofbirth", "contact"};
-
-            int i = 0;
-            while (i < message.length) {
-                String input = getInput(message[i]);
-                System.out.println(message[i] + " : " + input);
-                i++;
-            }
-
-            for (Map.Entry<String, String> m : hashMap.entrySet()) {
-                System.out.println(m.getKey() + " " + m.getValue());
-            }
-
-            if (!rs.next()) {
-                String sql = "INSERT INTO UserAccountRepository"
-                        + "(user_Name,first_name, last_name,password,user_email,address,DateofBirth,user_contact) VALUES"
-                        + "(?,?,?,?,?,?,?,?)";
-                PreparedStatement preparedStatement = conn.prepareStatement(sql);
-
-                preparedStatement.setString(1, hashMap.get("User Id"));
-                preparedStatement.setString(2, hashMap.get("First Name"));
-                preparedStatement.setString(3, hashMap.get("Last Name"));
-                preparedStatement.setString(4, hashMap.get("password"));
-                preparedStatement.setString(5, hashMap.get("email"));
-                preparedStatement.setString(6, hashMap.get("address"));
-                preparedStatement.setString(7, hashMap.get("dateofbirth"));
-                preparedStatement.setString(8, hashMap.get("contact"));
+                preparedStatement.setString(1,userName);
+                preparedStatement.setString(2, hashMap.get("PASSWORD"));
+                preparedStatement.setString(3, hashMap.get("FIRST NAME"));
+                preparedStatement.setString(4, hashMap.get("LAST NAME"));
+                preparedStatement.setString(5, hashMap.get("EMAIL"));
+                preparedStatement.setString(6, hashMap.get("ADDRESS"));
+                preparedStatement.setString(7, hashMap.get("DATEOFBIRTH"));
+                preparedStatement.setString(8, hashMap.get("CONTACT"));
                 preparedStatement.executeUpdate();
             } else {
-                System.out.println("User Exists with id : " + hashMap.get("User Id"));
+                System.out.println("User Exists with id : " + userName);
             }
         }
 
-    private String getInput(String message) {
+        private static String getInput(String message) {
         System.out.println("Enter the " + message + " : ");
         String input = sc.nextLine();
         hashMap.put(message, input);

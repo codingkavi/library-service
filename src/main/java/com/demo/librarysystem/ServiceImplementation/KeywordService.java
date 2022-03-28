@@ -1,5 +1,4 @@
 package com.demo.librarysystem.ServiceImplementation;
-
 import com.demo.librarysystem.repository.ConnectDao;
 import com.demo.librarysystem.service.LibraryServ;
 import java.sql.Connection;
@@ -9,7 +8,6 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class KeywordService implements LibraryServ {
-
 
     @Override
     public void findBooks()  {
@@ -25,7 +23,7 @@ public class KeywordService implements LibraryServ {
         }
 
     }
-    public void keySearch(String keyword) throws SQLException {
+    public void keySearch(String keyword) throws SQLException,NullPointerException {
 
         ConnectDao dao = new ConnectDao();
         Connection conn = dao.connect();

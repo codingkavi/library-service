@@ -2,7 +2,6 @@ package com.demo.librarysystem.ServiceImplementation;
 
 import com.demo.librarysystem.repository.ConnectDao;
 import com.demo.librarysystem.service.LibraryServ;
-
 import java.sql.*;
 import java.util.Scanner;
 
@@ -21,7 +20,7 @@ public class TitleService implements LibraryServ {
         }
     }
 
-    public void searchbyTitle(String bookSearch) throws SQLException {
+    public void searchbyTitle(String bookSearch) throws SQLException,NullPointerException {
 
         ConnectDao dao = new ConnectDao();
         Connection conn = dao.connect();
