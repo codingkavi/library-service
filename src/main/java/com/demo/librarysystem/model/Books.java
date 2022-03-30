@@ -18,6 +18,7 @@ public class Books {
 
     public Books() {}
 
+
     public Books(String author, String booktitle, int isbn, int noOfPages,String key,String publishername, int publishedyear,String genre) {
 
         this.author = author;
@@ -109,4 +110,6 @@ public class Books {
     public void setBooks(List<Books> books) {
         this.books = books;
     }
+
+
 }

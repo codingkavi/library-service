@@ -3,10 +3,15 @@ package com.demo.librarysystem.ServiceImplementation;
 
 import com.demo.librarysystem.repository.ConnectDao;
 import com.demo.librarysystem.service.LibraryServ;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import java.sql.*;
 import java.util.Scanner;
+
+
 
 public class AuthorService implements LibraryServ {
 
@@ -27,9 +32,11 @@ public class AuthorService implements LibraryServ {
         pstmt = conn.prepareStatement("Select * from BookRepository where LOWER(author_name) like  '%'  || LOWER(?) || '%'");
         pstmt.setString(1, bookSearch);
         ResultSet rs = pstmt.executeQuery();
+        //JSONArray json = new JSONArray();
+        ResultSetMetaData rsmd = rs.getMetaData();
 
-        while (rs.next()) {
             int bookId = rs.getInt("book_id");
+
             int ISBN = rs.getInt("book_ISBN");
             String author = rs.getString("author_name");
             String title = rs.getString("book_title");
@@ -49,4 +56,4 @@ public class AuthorService implements LibraryServ {
 
         }
     }
-}
+

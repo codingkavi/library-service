@@ -1,6 +1,9 @@
 package com.demo.librarysystem.repository;
 
+import com.demo.librarysystem.model.Books;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class BookRepository {
@@ -24,6 +27,8 @@ public class BookRepository {
     private int publishedyear;
     @Column(name = "key_search")
     private String key;
+
+
 
 
     public BookRepository(String authorName, String title, int ISBN, int noOfPages,String key, String publishername,int publishedyear){
@@ -92,5 +97,6 @@ public class BookRepository {
     public void setKey(String key) {
         this.key = key;
     }
+
 
 }

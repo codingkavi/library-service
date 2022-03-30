@@ -4,8 +4,14 @@ import com.demo.librarysystem.model.Books;
 import com.demo.librarysystem.repository.BookRepository;
 import com.demo.librarysystem.util.HibernateConfig;
 import org.hibernate.Session;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 
 public class LibraryService {
@@ -17,7 +23,8 @@ public class LibraryService {
         session = HibernateConfig.getSession();
     }
 
-    public void addBooks(ArrayList<Books> booksList) {
+   //@RequestMapping("/add")
+    public List<Books> addBooks(ArrayList<Books> booksList) {
 
         Iterator<Books> itr = booksList.iterator();
 
@@ -28,7 +35,8 @@ public class LibraryService {
             session.beginTransaction();
             session.save(bookRepo);
             session.getTransaction().commit();
-
+            return booksList;
         }
-    }
+       return null;
+   }
 }

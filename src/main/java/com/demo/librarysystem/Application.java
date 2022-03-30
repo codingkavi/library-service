@@ -6,20 +6,26 @@ import com.demo.librarysystem.model.Books;
 import com.demo.librarysystem.model.Users;
 import com.demo.librarysystem.service.LibraryServ;
 import com.demo.librarysystem.service.LibraryService;
-import com.demo.librarysystem.service.UserLogin;
+import com.demo.librarysystem.service.Login;
 import com.demo.librarysystem.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 @SpringBootApplication
+
+//@ComponentScan("LibraryServ.class")
 public class Application {
 
     public static void main(String[] args) throws SQLException, JsonProcessingException {
-        SpringApplication.run(Application.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+
 
         //createBooks();
         //createUsers();
@@ -74,7 +80,7 @@ public class Application {
                 case 7:
                     System.exit(0);
                 case 8:
-                    UserLogin userLogin = new UserLogin();
+                    Login userLogin = new Login();
                     userLogin.register();
                     sc.nextLine();
                     break;
@@ -100,13 +106,13 @@ public class Application {
     private static void createBooks() {
         ArrayList<Books> booksList = new ArrayList<>();
         // Static data for testing
-        final Books BOOK1 = new Books( "J.K.Rowling", "Harry Potter", 123,40,"Harry","Bloomsbury Publishing",1983,"Fantasy");
-        final Books BOOK2 = new Books( "Peggy Parish", "Amelia Bedelia", 567,30,"Amelia","Harper & Row",1963,"Children's picture book,comedy");
-        final Books BOOK3 = new Books( "Norm Feuti", "Beak & Ally", 890,50,"Beak","HarperCollins",1981,"Comics");
-        final Books BOOK4 = new Books( "Mo O'hara", "The Zombie Goldfish", 342,70,"Zombie","MacMillan",2011,"Fantasy");
-        final Books BOOK5 = new Books("Ursula","A Wizard Of EarthSea",432,55,"Wizard","Parnassus",1968,"Fantasy");
-        final Books BOOK6 = new Books("Micheal Dahl","Troll Hunters",987,45,"Troll","Print",2012,"Adventure");
-        final Books BOOK7 = new Books("Kathryn","World Atlas",657,75,"World","Hammond",2013,"Sc-Fi");
+        Books BOOK1 = new Books( "J.K.Rowling", "Harry Potter", 123,40,"Harry","Bloomsbury Publishing",1983,"Fantasy");
+        Books BOOK2 = new Books( "Peggy Parish", "Amelia Bedelia", 567,30,"Amelia","Harper & Row",1963,"Children's picture book,comedy");
+        Books BOOK3 = new Books( "Norm Feuti", "Beak & Ally", 890,50,"Beak","HarperCollins",1981,"Comics");
+        Books BOOK4 = new Books( "Mo O'hara", "The Zombie Goldfish", 342,70,"Zombie","MacMillan",2011,"Fantasy");
+        Books BOOK5 = new Books("Ursula","A Wizard Of EarthSea",432,55,"Wizard","Parnassus",1968,"Fantasy");
+        Books BOOK6 = new Books("Micheal Dahl","Troll Hunters",987,45,"Troll","Print",2012,"Adventure");
+        Books BOOK7 = new Books("Kathryn","World Atlas",657,75,"World","Hammond",2013,"Sc-Fi");
 
         //adding the objects into ArrayList
         booksList.add(BOOK1);
