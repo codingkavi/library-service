@@ -1,5 +1,7 @@
 package com.demo.librarysystem.util;
 import com.demo.librarysystem.repository.ConnectDao;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,10 +21,11 @@ public class CreateUsers implements UserConst{
         public static void create(String userName) throws SQLException {
 
             sc = new Scanner(System.in);
+
             pstmt = conn.prepareStatement(QUERY_SELECT_USERNAME);
-            pstmt.setString(1,userName);
+            pstmt.setString(1, userName);
             rs = pstmt.executeQuery();
-            if(!rs.next()) {
+            if (!rs.next()) {
                 int i = 0;
                 while (i < MESSAGE.length) {
                     String input = getInput(MESSAGE[i]);
@@ -31,7 +34,7 @@ public class CreateUsers implements UserConst{
                 }
                 PreparedStatement preparedStatement = conn.prepareStatement(QUERY_INSERT_FOR_LOGIN);
 
-                preparedStatement.setString(1,userName);
+                preparedStatement.setString(1, userName);
                 preparedStatement.setString(2, hashMap.get("PASSWORD"));
                 preparedStatement.setString(3, hashMap.get("FIRST NAME"));
                 preparedStatement.setString(4, hashMap.get("LAST NAME"));

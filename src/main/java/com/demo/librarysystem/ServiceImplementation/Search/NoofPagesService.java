@@ -1,4 +1,4 @@
-package com.demo.librarysystem.ServiceImplementation;
+package com.demo.librarysystem.ServiceImplementation.Search;
 
 import com.demo.librarysystem.repository.ConnectDao;
 import com.demo.librarysystem.service.LibraryServ;

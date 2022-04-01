@@ -4,8 +4,11 @@ import com.demo.librarysystem.model.Users;
 import com.demo.librarysystem.repository.UserAccountRepository;
 import com.demo.librarysystem.util.HibernateConfig;
 import org.hibernate.Session;
+import org.springframework.web.bind.annotation.GetMapping;
+
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class UserService {
 
@@ -15,6 +18,7 @@ public class UserService {
         session = HibernateConfig.getSession();
     }
 
+
     public void addUser(ArrayList<Users> usersDetails) {
         Iterator<Users> itr = usersDetails.iterator();
         while (itr.hasNext()) {
@@ -23,6 +27,8 @@ public class UserService {
             session.beginTransaction();
             session.save(repo);
             session.getTransaction().commit();
+
         }
+
     }
 }

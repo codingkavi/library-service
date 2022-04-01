@@ -13,7 +13,7 @@ public class Books {
     int noOfPages;
     String key;
     String genre;
-    List<Books> books;
+
 
 
     public Books() {}
@@ -103,13 +103,18 @@ public class Books {
         this.genre = genre;
     }
 
-    public List<Books> getBooks() {
-        return books;
+    @Override
+    public String toString() {
+        return "Books{" +
+                "bookId=" + bookId +
+                ", author='" + author + '\'' +
+                ", booktitle='" + booktitle + '\'' +
+                ", publishername='" + publishername + '\'' +
+                ", publishedyear=" + publishedyear +
+                ", isbn=" + isbn +
+                ", noOfPages=" + noOfPages +
+                ", key='" + key + '\'' +
+                ", genre='" + genre + '\'' +
+                '}';
     }
-
-    public void setBooks(List<Books> books) {
-        this.books = books;
-    }
-
-
 }

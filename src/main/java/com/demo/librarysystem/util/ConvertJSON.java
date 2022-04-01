@@ -23,12 +23,15 @@ public class ConvertJSON {
 
         ResultSetMetaData metaData = resultSet.getMetaData();
         int columnCount = metaData.getColumnCount();
+        System.out.println(columnCount);
         Map<String,Object> result = new HashMap<>();
         for(int i = 1; i <= columnCount; i++){
             String columnName = metaData.getColumnName(i);
             Object object = resultSet.getObject(i);
             result.put(columnName,object);
+
         }
+        System.out.println(result);
         return result;
     }
 }

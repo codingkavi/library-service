@@ -4,14 +4,9 @@ import com.demo.librarysystem.model.Books;
 import com.demo.librarysystem.repository.BookRepository;
 import com.demo.librarysystem.util.HibernateConfig;
 import org.hibernate.Session;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 
 public class LibraryService {
@@ -23,20 +18,29 @@ public class LibraryService {
         session = HibernateConfig.getSession();
     }
 
-   //@RequestMapping("/add")
-    public List<Books> addBooks(ArrayList<Books> booksList) {
+
+    public void addBooks(ArrayList<Books> booksList) {
 
         Iterator<Books> itr = booksList.iterator();
 
+
+        Books books;
         while (itr.hasNext()) {
 
-            Books books = itr.next();
-            BookRepository bookRepo = new BookRepository(books.getAuthor(), books.getTitle(), books.getIsbn(), books.getNoOfPages(),books.getKey(), books.getPublishername(), books.getPublishedyear());
+            books = itr.next();
+            BookRepository bookRepo = new BookRepository(books.getAuthor(), books.getTitle(), books.getIsbn(), books.getNoOfPages(), books.getKey(), books.getPublishername(), books.getPublishedyear(), books.getGenre());
             session.beginTransaction();
             session.save(bookRepo);
             session.getTransaction().commit();
-            return booksList;
         }
-       return null;
-   }
+    }
+    public BookRepository addBook (Books books){
+        System.out.println(books);
+        BookRepository bookRepository = new BookRepository(books.getAuthor(), books.getTitle(), books.getIsbn(), books.getNoOfPages(), books.getKey(), books.getPublishername(), books.getPublishedyear(), books.getGenre());
+        session.beginTransaction();
+        session.save(bookRepository);
+        session.getTransaction().commit();
+        System.out.println(books);
+        return bookRepository;
+    }
 }

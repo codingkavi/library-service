@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 
 
-public class UserLogin implements UserConst {
+public class Login implements UserConst {
     public void register() throws SQLException {
 
         Scanner sc = new Scanner(System.in);

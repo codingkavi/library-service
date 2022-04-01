@@ -1,6 +1,6 @@
 package com.demo.librarysystem;
 
-import com.demo.librarysystem.ServiceImplementation.*;
+import com.demo.librarysystem.ServiceImplementation.Search.*;
 import com.demo.librarysystem.Validations.PhoneValidation;
 import com.demo.librarysystem.model.Books;
 import com.demo.librarysystem.model.Users;
@@ -12,7 +12,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -87,6 +86,11 @@ public class Application {
                 case 9:
                     PhoneValidation phoneValidation = new PhoneValidation();
                     phoneValidation.isValid123();
+                    sc.nextLine();
+                    break;
+                case 10:
+                    AuthorAndTitleService a = new AuthorAndTitleService();
+                    a.searchbyAuthorAndTitle("J.K.Rowling","Harry Potter");
                     sc.nextLine();
                     break;
                 default:

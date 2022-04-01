@@ -27,11 +27,13 @@ public class BookRepository {
     private int publishedyear;
     @Column(name = "key_search")
     private String key;
+    @Column(name = "Genre")
+    private String genre;
 
 
 
 
-    public BookRepository(String authorName, String title, int ISBN, int noOfPages,String key, String publishername,int publishedyear){
+    public BookRepository(String authorName, String title, int ISBN, int noOfPages,String key, String publishername,int publishedyear,String genre){
 
         this.authorName = authorName;
         this.title = title;
@@ -40,6 +42,7 @@ public class BookRepository {
         this.key = key;
         this.publishername = publishername;
         this.publishedyear = publishedyear;
+        this.genre = genre;
     }
 
     public void setAuthorName(String authorName) {
@@ -98,5 +101,26 @@ public class BookRepository {
         this.key = key;
     }
 
+    public String getGenre() {
+        return genre;
+    }
 
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    @Override
+    public String toString() {
+        return "BookRepository{" +
+                "bookId=" + bookId +
+                ", authorName='" + authorName + '\'' +
+                ", title='" + title + '\'' +
+                ", ISBN=" + ISBN +
+                ", noOfPages=" + noOfPages +
+                ", publishername='" + publishername + '\'' +
+                ", publishedyear=" + publishedyear +
+                ", key='" + key + '\'' +
+                ", genre='" + genre + '\'' +
+                '}';
+    }
 }
