@@ -1,5 +1,4 @@
 package com.demo.librarysystem.model;
-import java.util.List;
 
 
 public class Books {
@@ -14,10 +13,7 @@ public class Books {
     String key;
     String genre;
 
-
-
     public Books() {}
-
 
     public Books(String author, String booktitle, int isbn, int noOfPages,String key,String publishername, int publishedyear,String genre) {
 
@@ -31,8 +27,9 @@ public class Books {
         this.genre = genre;
     }
 
-    public void setBookId(int bookId) {
+    public int setBookId(int bookId) {
         this.bookId = bookId;
+        return bookId;
     }
 
     public int getBookId() {
@@ -102,6 +99,7 @@ public class Books {
     public void setGenre(String genre) {
         this.genre = genre;
     }
+
 
     @Override
     public String toString() {

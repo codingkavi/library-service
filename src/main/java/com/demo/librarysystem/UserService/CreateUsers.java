@@ -1,6 +1,6 @@
-package com.demo.librarysystem.util;
+package com.demo.librarysystem.UserService;
 import com.demo.librarysystem.repository.ConnectDao;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.demo.librarysystem.util.UserConst;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-public class CreateUsers implements UserConst{
+public class CreateUsers implements UserConst {
 
         static Scanner sc;
         static HashMap<String,String> hashMap = new HashMap();

@@ -8,7 +8,7 @@ public interface UserConst {
      String QUERY_SELECT_USERNAME = "Select user_Name from UserAccountRepository where user_Name = ? ";
 
       String QUERY_INSERT_FOR_LOGIN ="INSERT INTO UserAccountRepository"
-        + "(user_Name,first_name, last_name,password,user_email,address,DateofBirth,user_contact) VALUES"
+        + "(user_Name,password,first_name, last_name,user_email,address,DateofBirth,user_contact) VALUES"
         + "(?,?,?,?,?,?,?,?)";
 
 

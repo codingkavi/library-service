@@ -1,9 +1,6 @@
 package com.demo.librarysystem.repository;
-
-import com.demo.librarysystem.model.Books;
-
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
 public class BookRepository {
@@ -14,7 +11,7 @@ public class BookRepository {
     @Column(name = "book_id")
     private int bookId;
     @Column(name = "author_name")
-    private String authorName;
+    private String author;
     @Column(name = "book_title")
     private String title;
     @Column(name = "book_ISBN")
@@ -30,12 +27,9 @@ public class BookRepository {
     @Column(name = "Genre")
     private String genre;
 
+    public BookRepository(String author, String title, int ISBN, int noOfPages,String key, String publishername,int publishedyear,String genre){
 
-
-
-    public BookRepository(String authorName, String title, int ISBN, int noOfPages,String key, String publishername,int publishedyear,String genre){
-
-        this.authorName = authorName;
+        this.author = author;
         this.title = title;
         this.ISBN = ISBN;
         this.noOfPages = noOfPages;
@@ -45,12 +39,20 @@ public class BookRepository {
         this.genre = genre;
     }
 
+    public int getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
+    }
+
     public void setAuthorName(String authorName) {
-        this.authorName = authorName;
+        this.author = authorName;
     }
 
     public String getAuthorName() {
-        return authorName;
+        return author;
     }
 
     public void setTitle(String title) {
@@ -113,7 +115,7 @@ public class BookRepository {
     public String toString() {
         return "BookRepository{" +
                 "bookId=" + bookId +
-                ", authorName='" + authorName + '\'' +
+                ", author='" + author + '\'' +
                 ", title='" + title + '\'' +
                 ", ISBN=" + ISBN +
                 ", noOfPages=" + noOfPages +

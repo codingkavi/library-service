@@ -15,6 +15,7 @@ public class HibernateConfig {
         Configuration con = new Configuration().configure("hibernate.xml")
                 .addAnnotatedClass(UserAccountRepository.class)
                 .addAnnotatedClass(BookRepository.class);
+
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(con.getProperties())
                 .build();

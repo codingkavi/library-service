@@ -1,20 +1,18 @@
-package com.demo.librarysystem.service;
+package com.demo.librarysystem.UserService;
 
 import com.demo.librarysystem.model.Users;
 import com.demo.librarysystem.repository.UserAccountRepository;
 import com.demo.librarysystem.util.HibernateConfig;
 import org.hibernate.Session;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
-public class UserService {
+public class UserServiceImpl{
 
     Session session;
 
-    public UserService(){
+    public UserServiceImpl(){
         session = HibernateConfig.getSession();
     }
 

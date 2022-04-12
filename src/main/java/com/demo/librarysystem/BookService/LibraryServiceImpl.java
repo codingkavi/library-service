@@ -1,19 +1,18 @@
-package com.demo.librarysystem.service;
+package com.demo.librarysystem.BookService;
 
 import com.demo.librarysystem.model.Books;
 import com.demo.librarysystem.repository.BookRepository;
 import com.demo.librarysystem.util.HibernateConfig;
 import org.hibernate.Session;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 
 
-public class LibraryService {
+public class LibraryServiceImpl {
 
     Session session;
 
-    public LibraryService() {
+    public LibraryServiceImpl() {
 
         session = HibernateConfig.getSession();
     }
@@ -34,13 +33,13 @@ public class LibraryService {
             session.getTransaction().commit();
         }
     }
-    public BookRepository addBook (Books books){
-        System.out.println(books);
-        BookRepository bookRepository = new BookRepository(books.getAuthor(), books.getTitle(), books.getIsbn(), books.getNoOfPages(), books.getKey(), books.getPublishername(), books.getPublishedyear(), books.getGenre());
+    public Books addBook(Books book){
+        System.out.println(book);
+        BookRepository bookRepository = new BookRepository(book.getAuthor(), book.getTitle(), book.getIsbn(), book.getNoOfPages(), book.getKey(), book.getPublishername(), book.getPublishedyear(), book.getGenre());
         session.beginTransaction();
         session.save(bookRepository);
         session.getTransaction().commit();
-        System.out.println(books);
-        return bookRepository;
+        System.out.println(book);
+        return book;
     }
 }

@@ -29,8 +29,8 @@ public class ConvertJSON {
             String columnName = metaData.getColumnName(i);
             Object object = resultSet.getObject(i);
             result.put(columnName,object);
-
         }
+
         System.out.println(result);
         return result;
     }
