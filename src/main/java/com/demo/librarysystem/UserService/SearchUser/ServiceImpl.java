@@ -2,7 +2,7 @@ package com.demo.librarysystem.UserService.SearchUser;
 
 import com.demo.librarysystem.repository.ConnectDao;
 import com.demo.librarysystem.util.ConvertJSON;
-import com.demo.librarysystem.util.findUser;
+import com.demo.librarysystem.UserService.findUser;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-public class findByName implements findUser {
+public class ServiceImpl implements findUser {
 
     @Override
     public List<Map<String, Object>> findbyLastname(String lastname) throws SQLException {
@@ -24,4 +24,14 @@ public class findByName implements findUser {
         List<Map<String, Object>> entities= convertJSON.getResult(resultSet);
         return entities;
     }
+    public void deletebyname(String username) throws SQLException {
+        ConnectDao connectDao = new ConnectDao();
+        Connection conn = connectDao.connect();
+        PreparedStatement preparedStatement;
+        preparedStatement = conn.prepareStatement("Delete UserRepository where user_Name = ?");
+        preparedStatement.setString(1, username);
+        ResultSet resultSet = preparedStatement.executeQuery();
+    }
+
+
 }

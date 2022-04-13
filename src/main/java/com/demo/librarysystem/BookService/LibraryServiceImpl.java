@@ -39,6 +39,15 @@ public class LibraryServiceImpl {
         session.beginTransaction();
         session.save(bookRepository);
         session.getTransaction().commit();
+        /*book.setBookId(bookRepository.getBookId());
+        book.setAuthor(bookRepository.getAuthorName());
+        book.setTitle(bookRepository.getTitle());
+        book.setNoOfPages(bookRepository.getNoOfPages());
+        book.setIsbn(bookRepository.getISBN());
+        book.setGenre(bookRepository.getGenre());
+        book.setKey(bookRepository.getKey());
+        book.setPublishedyear(bookRepository.getPublishedyear());
+        book.setPublishername(bookRepository.getPublishername());*/
         System.out.println(book);
         return book;
     }

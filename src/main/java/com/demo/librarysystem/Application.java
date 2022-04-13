@@ -117,7 +117,7 @@ public class Application {
     private static void createBooks() {
         ArrayList<Books> booksList = new ArrayList<>();
         // Static data for testing
-        Books BOOK1 = new Books( "J.K.Rowling", "Harry Potter", 123,40,"Harry","Bloomsbury Publishing",1983,"Fantasy");
+        Books BOOK1 = new Books("J.K.Rowling", "Harry Potter", 123,40,"Harry","Bloomsbury Publishing",1983,"Fantasy");
         Books BOOK2 = new Books( "Peggy Parish", "Amelia Bedelia", 567,30,"Amelia","Harper & Row",1963,"Children's picture book,comedy");
         Books BOOK3 = new Books( "Norm Feuti", "Beak & Ally", 890,50,"Beak","HarperCollins",1981,"Comics");
         Books BOOK4 = new Books( "Mo O'hara", "The Zombie Goldfish", 342,70,"Zombie","MacMillan",2011,"Fantasy");

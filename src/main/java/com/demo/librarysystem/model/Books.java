@@ -2,7 +2,6 @@ package com.demo.librarysystem.model;
 
 
 public class Books {
-
     int bookId;
     String author;
     String booktitle;
@@ -27,9 +26,8 @@ public class Books {
         this.genre = genre;
     }
 
-    public int setBookId(int bookId) {
+    public void setBookId(int bookId) {
         this.bookId = bookId;
-        return bookId;
     }
 
     public int getBookId() {
@@ -104,7 +102,7 @@ public class Books {
     @Override
     public String toString() {
         return "Books{" +
-                "bookId=" + bookId +
+
                 ", author='" + author + '\'' +
                 ", booktitle='" + booktitle + '\'' +
                 ", publishername='" + publishername + '\'' +

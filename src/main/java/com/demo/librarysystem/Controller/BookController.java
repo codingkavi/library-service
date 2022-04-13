@@ -5,6 +5,7 @@ import com.demo.librarysystem.ServiceImplementation.DeleteServiceImpl.DeleteServ
 import com.demo.librarysystem.ServiceImplementation.DeleteServiceImpl.DeleteServiceByAuthor;
 import com.demo.librarysystem.ServiceImplementation.SearchImpl.AuthorService;
 import com.demo.librarysystem.ServiceImplementation.SearchImpl.TitleService;
+import com.demo.librarysystem.ServiceImplementation.SearchImpl.bookIdService;
 import com.demo.librarysystem.model.Books;
 import org.springframework.web.bind.annotation.*;
 import java.sql.SQLException;
@@ -14,17 +15,26 @@ import java.util.Map;
 @RestController("/api")
 public class BookController {
 
+
     @GetMapping(value = "/book/{authorName}")
-    public List<Map<String, Object>> findBookbyAuthor(@PathVariable("authorName") String authorName) throws SQLException {
+    public List<Map<String, Object>> getBookbyAuthor(@PathVariable("authorName") String authorName) throws SQLException {
         AuthorService authorService = new AuthorService();
         List<Map<String, Object>> result = authorService.findBook(authorName);
         return result;
     }
 
+    @GetMapping(value = "/bookid/{id}")
+    public List<Map<String, Object>> getBookbyId(@PathVariable int id) throws SQLException {
+        bookIdService IdService = new bookIdService();
+        List<Map<String, Object>> result = IdService.searchbyId(id);
+        return result;
+
+    }
+
     @GetMapping (value = "/title/{titleName}")
-    public List<Map<String, Object>> findBookbyTitle(@PathVariable("titleName") String titleName) throws SQLException {
+    public List<Map<String, Object>> getBookbyTitle(@PathVariable("titleName") String titleName) throws SQLException {
         TitleService titleService = new TitleService();
-        List<Map<String, Object>> result = titleService.findBook(titleName);
+        List<Map<String, Object>> result = titleService.searchbyTitle(titleName);
         return result;
     }
 

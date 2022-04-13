@@ -23,10 +23,7 @@ public class TitleService implements LibraryService {
         }
     }
 
-    public List<Map<String, Object>> findBook(String bookSearch) throws SQLException {
-        List<Map<String, Object>> data = searchbyTitle(bookSearch);
-        return data;
-    }
+
 
     public List<Map<String, Object>> searchbyTitle(String bookSearch) throws SQLException,NullPointerException {
 

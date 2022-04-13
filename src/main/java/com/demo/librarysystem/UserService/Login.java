@@ -1,6 +1,5 @@
 package com.demo.librarysystem.UserService;
 
-import com.demo.librarysystem.util.UserConst;
 import java.sql.SQLException;
 import java.util.Scanner;
 

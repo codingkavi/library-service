@@ -1,4 +1,4 @@
-package com.demo.librarysystem.util;
+package com.demo.librarysystem.UserService;
 
 public interface UserConst {
      String[] MESSAGE = {"PASSWORD","FIRST NAME", "LAST NAME",  "EMAIL",

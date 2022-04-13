@@ -1,5 +1,4 @@
 package com.demo.librarysystem.ServiceImplementation.SearchImpl;
-
 import com.demo.librarysystem.BookService.LibraryService;
 import com.demo.librarysystem.model.Books;
 import com.demo.librarysystem.repository.ConnectDao;
@@ -40,7 +39,12 @@ public class AuthorService implements LibraryService {
         ResultSet resultSet = pstmt.executeQuery();
 
         while(resultSet.next()){
-            book.setBookId(resultSet.getInt("book_id"));
+           //    resultSet.updateString("","");
+            int id = resultSet.getInt("book_id");
+            System.out.println(id);
+            book.setBookId(id);
+            int id1 = book.getBookId();
+            System.out.println(id1);
 
             book.setAuthor(resultSet.getString("author_name"));
             book.setTitle(resultSet.getString("book_title"));
