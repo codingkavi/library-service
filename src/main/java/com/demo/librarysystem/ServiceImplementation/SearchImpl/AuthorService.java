@@ -48,6 +48,5 @@ public class AuthorService implements LibraryService {
         preparedStatement.setInt(3,book.getBookId());
         int count = preparedStatement.executeUpdate();
         System.out.println(count + " rows updated");
-
     }
 }

@@ -1,7 +1,6 @@
 package com.demo.librarysystem.repository;
 import javax.persistence.*;
 
-
 @Entity
 public class BookRepository {
 
