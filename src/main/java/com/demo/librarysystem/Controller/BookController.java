@@ -46,8 +46,9 @@ public class BookController {
         return result;
     }
 
-    @GetMapping(value = "/find?authorName={authorName}&titleName={titleName}")
-    public List<Map<String, Object>> findBooks(@PathVariable String authorName, @PathVariable String titleName) throws SQLException {
+    @GetMapping(value = "/find")
+    public List<Map<String, Object>> findBooks(@RequestParam("authorName") String authorName ,
+                                               @RequestParam("titleName") String titleName) throws SQLException {
         AuthorAndTitleService AandT = new AuthorAndTitleService();
         List<Map<String, Object>> result = AandT.searchbyAuthorAndTitle(authorName, titleName);
         return result;
