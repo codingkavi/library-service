@@ -4,7 +4,7 @@ package com.demo.librarysystem.model;
 public class Books {
     int bookId;
     String author;
-    String booktitle;
+    String title;
     String publishername;
     int publishedyear;
     int isbn;
@@ -14,10 +14,10 @@ public class Books {
 
     public Books() {}
 
-    public Books(String author, String booktitle, int isbn, int noOfPages,String key,String publishername, int publishedyear,String genre) {
+    public Books(String author, String title, int isbn, int noOfPages,String key,String publishername, int publishedyear,String genre) {
 
         this.author = author;
-        this.booktitle = booktitle;
+        this.title = title;
         this.isbn = isbn;
         this.noOfPages = noOfPages;
         this.key = key;
@@ -44,11 +44,11 @@ public class Books {
     }
 
     public String getTitle() {
-        return booktitle;
+        return title;
     }
 
-    public void setTitle(String booktitle) {
-        this.booktitle = booktitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getIsbn() {
@@ -105,7 +105,7 @@ public class Books {
         return "Books{" +
                 " bookId='" + bookId + '\'' +
                 ", author='" + author + '\'' +
-                ", booktitle='" + booktitle + '\'' +
+                ", title='" + title + '\'' +
                 ", publishername='" + publishername + '\'' +
                 ", publishedyear=" + publishedyear +
                 ", isbn=" + isbn +

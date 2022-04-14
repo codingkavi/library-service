@@ -21,22 +21,16 @@ public class ConvertJSON {
    
     public Map<String, Object> getEntityfromResultset(ResultSet resultSet) throws SQLException{
 
-        ResultSetMetaData metaData = resultSet.getMetaData();
-        int columnCount = metaData.getColumnCount();
-        System.out.println(columnCount);
         Map<String,Object> resultsMap = new HashMap<>();
-         for(int i = 1; i <= columnCount; i++){
-
-             resultsMap.put("BookId", resultSet.getInt("book_id"));
-             resultsMap.put("Author", resultSet.getString("author_name"));
-             resultsMap.put("Title", resultSet.getString("book_title"));
-             resultsMap.put("Isbn", resultSet.getInt("book_ISBN"));
-             resultsMap.put("NoOfPages", resultSet.getInt("book_noofpages"));
-             resultsMap.put("Publishername", resultSet.getString("Publisher"));
-             resultsMap.put("Publishedyear", resultSet.getInt("Year_Published"));
-             resultsMap.put("Key", resultSet.getString("key_search"));
-             resultsMap.put("Genre", resultSet.getString("Genre"));
-       }
+         resultsMap.put("BookId", resultSet.getInt("book_id"));
+         resultsMap.put("Author", resultSet.getString("author_name"));
+         resultsMap.put("Title", resultSet.getString("book_title"));
+         resultsMap.put("Isbn", resultSet.getInt("book_ISBN"));
+         resultsMap.put("NoOfPages", resultSet.getInt("book_noofpages"));
+         resultsMap.put("Publishername", resultSet.getString("Publisher"));
+         resultsMap.put("Publishedyear", resultSet.getInt("Year_Published"));
+         resultsMap.put("Key", resultSet.getString("key_search"));
+         resultsMap.put("Genre", resultSet.getString("Genre"));
          return resultsMap;
     }
 }

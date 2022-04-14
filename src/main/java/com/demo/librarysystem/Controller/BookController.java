@@ -4,6 +4,7 @@ import com.demo.librarysystem.BookService.LibraryServiceImpl;
 import com.demo.librarysystem.ServiceImplementation.DeleteServiceImpl.DeleteService;
 import com.demo.librarysystem.ServiceImplementation.DeleteServiceImpl.DeleteServiceByAuthor;
 import com.demo.librarysystem.ServiceImplementation.GetAllBooks;
+import com.demo.librarysystem.ServiceImplementation.SearchImpl.AuthorAndTitleService;
 import com.demo.librarysystem.ServiceImplementation.SearchImpl.AuthorService;
 import com.demo.librarysystem.ServiceImplementation.SearchImpl.TitleService;
 import com.demo.librarysystem.ServiceImplementation.SearchImpl.bookIdService;
@@ -15,7 +16,6 @@ import java.util.Map;
 
 @RestController("/api")
 public class BookController {
-
 
     @GetMapping(value = "/book/{authorName}")
     public List<Map<String, Object>> getBookbyAuthor(@PathVariable("authorName") String authorName) throws SQLException {
@@ -46,23 +46,23 @@ public class BookController {
         return result;
     }
 
-    /*@GetMapping(value = "/find?authorName={authorName}&titleName={titleName}")
-    public List<Map<String, Object>> findBooks(@PathVariable(value = "authorName") String authorName, @PathVariable(value = "titleName") String titleName) throws SQLException {
-      AuthorAndTitleService AandT = new AuthorAndTitleService();
-      List<Map<String, Object>> result = AandT.searchbyAuthorAndTitle(authorName,titleName);
-
-      return result;
-    }*/
-
-    @PutMapping(value = "/book")
-    public Books createBook(@RequestBody Books book){
-        LibraryServiceImpl libraryService = new LibraryServiceImpl();
-        Books result = libraryService.addBook(book);
+    @GetMapping(value = "/find?authorName={authorName}&titleName={titleName}")
+    public List<Map<String, Object>> findBooks(@PathVariable String authorName, @PathVariable String titleName) throws SQLException {
+        AuthorAndTitleService AandT = new AuthorAndTitleService();
+        List<Map<String, Object>> result = AandT.searchbyAuthorAndTitle(authorName, titleName);
         return result;
     }
 
+    @PutMapping(value = "/book/update")
+    public void update(@RequestBody Books book) throws SQLException {
+        System.out.println(book);
+        AuthorService authorService = new AuthorService();
+        authorService.updateAuthor(book);
+
+    }
+
     @PostMapping(value = "/book")
-    public Books update(@RequestBody Books book) throws SQLException {
+    public Books createBook(@RequestBody Books book) throws SQLException {
 
         LibraryServiceImpl libraryService = new LibraryServiceImpl();
         Books result = libraryService.addBook(book);

@@ -39,8 +39,7 @@ public class AuthorService implements LibraryService {
     public void updateAuthor(Books book) throws SQLException {
         ConnectDao dao = new ConnectDao();
         Connection conn = dao.connect();
-        Statement statement = conn.createStatement();
-        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement ;
         preparedStatement = conn.prepareStatement("Update BookRepository SET author_name = ? ,book_title = ? where book_id = ?");
         preparedStatement.setString(1, book.getAuthor());
         System.out.println(book.getAuthor());
