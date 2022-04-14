@@ -1,38 +1,43 @@
 package com.demo.librarysystem.util;
+
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class ConvertJSON {
 
-    public List<Map<String, Object>> getResult(ResultSet resultSet) throws SQLException {
+    public List<Map<String, Object>> getEntitesfromResultSet(ResultSet resultSet) throws SQLException {
 
         ArrayList<Map<String,Object>> entities = new ArrayList<>();
+
         while(resultSet.next()){
-            entities.add(getData(resultSet));
+            entities.add(getEntityfromResultset(resultSet));
+            System.out.println(entities);
         }
         return entities;
     }
    
-    public Map<String, Object> getData(ResultSet resultSet) throws SQLException{
+    public Map<String, Object> getEntityfromResultset(ResultSet resultSet) throws SQLException{
 
         ResultSetMetaData metaData = resultSet.getMetaData();
         int columnCount = metaData.getColumnCount();
         System.out.println(columnCount);
-        Map<String,Object> result = new HashMap<>();
-        for(int i = 1; i <= columnCount; i++){
-            String columnName = metaData.getColumnName(i);
-            Object object = resultSet.getObject(i);
-            result.put(columnName,object);
-        }
+        Map<String,Object> resultsMap = new HashMap<>();
+         for(int i = 1; i <= columnCount; i++){
 
-        System.out.println(result);
-        return result;
+             resultsMap.put("BookId", resultSet.getInt("book_id"));
+             resultsMap.put("Author", resultSet.getString("author_name"));
+             resultsMap.put("Title", resultSet.getString("book_title"));
+             resultsMap.put("Isbn", resultSet.getInt("book_ISBN"));
+             resultsMap.put("NoOfPages", resultSet.getInt("book_noofpages"));
+             resultsMap.put("Publishername", resultSet.getString("Publisher"));
+             resultsMap.put("Publishedyear", resultSet.getInt("Year_Published"));
+             resultsMap.put("Key", resultSet.getString("key_search"));
+             resultsMap.put("Genre", resultSet.getString("Genre"));
+       }
+         return resultsMap;
     }
 }
 

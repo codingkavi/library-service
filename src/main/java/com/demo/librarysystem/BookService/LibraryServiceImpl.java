@@ -33,21 +33,13 @@ public class LibraryServiceImpl {
             session.getTransaction().commit();
         }
     }
+
     public Books addBook(Books book){
         System.out.println(book);
         BookRepository bookRepository = new BookRepository(book.getAuthor(), book.getTitle(), book.getIsbn(), book.getNoOfPages(), book.getKey(), book.getPublishername(), book.getPublishedyear(), book.getGenre());
         session.beginTransaction();
         session.save(bookRepository);
         session.getTransaction().commit();
-        /*book.setBookId(bookRepository.getBookId());
-        book.setAuthor(bookRepository.getAuthorName());
-        book.setTitle(bookRepository.getTitle());
-        book.setNoOfPages(bookRepository.getNoOfPages());
-        book.setIsbn(bookRepository.getISBN());
-        book.setGenre(bookRepository.getGenre());
-        book.setKey(bookRepository.getKey());
-        book.setPublishedyear(bookRepository.getPublishedyear());
-        book.setPublishername(bookRepository.getPublishername());*/
         System.out.println(book);
         return book;
     }

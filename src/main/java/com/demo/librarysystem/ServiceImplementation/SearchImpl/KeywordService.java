@@ -12,11 +12,6 @@ import java.util.Scanner;
 
 public class KeywordService implements LibraryService {
 
-    public List<Map<String, Object>> findBook(String bookSearch) throws SQLException {
-        List<Map<String, Object>> data = keySearch(bookSearch);
-        return data;
-    }
-
     @Override
     public void findBooks()  {
 
@@ -46,7 +41,7 @@ public class KeywordService implements LibraryService {
         pstmt.setString(1,  keyword);
         ResultSet rs = pstmt.executeQuery();
         ConvertJSON convertJSON = new ConvertJSON();
-        List<Map<String, Object>> entities = convertJSON.getResult(rs);
+        List<Map<String, Object>> entities = convertJSON.getEntitesfromResultSet(rs);
         return entities;
 
     }

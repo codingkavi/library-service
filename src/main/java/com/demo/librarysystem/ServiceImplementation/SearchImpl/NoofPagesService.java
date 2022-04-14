@@ -42,7 +42,7 @@ public class NoofPagesService implements LibraryService {
         pstmt.setInt(2,input2);
         ResultSet rs = pstmt.executeQuery();
         ConvertJSON convertJSON = new ConvertJSON();
-        List<Map<String, Object>> entities = convertJSON.getResult(rs);
+        List<Map<String, Object>> entities = convertJSON.getEntitesfromResultSet(rs);
         return entities;
 
         }

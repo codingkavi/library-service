@@ -3,7 +3,6 @@ package com.demo.librarysystem.ServiceImplementation.SearchImpl;
 import com.demo.librarysystem.model.Books;
 import com.demo.librarysystem.repository.ConnectDao;
 import com.demo.librarysystem.util.ConvertJSON;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,7 +37,7 @@ public class AuthorAndTitleService{
             book.setGenre(resultSet.getString("Genre"));
         }
         ConvertJSON convertJSON = new ConvertJSON();
-        List<Map<String, Object>> entities = convertJSON.getResult(resultSet);
+        List<Map<String, Object>> entities = convertJSON.getEntitesfromResultSet(resultSet);
         return entities;
     }
 }

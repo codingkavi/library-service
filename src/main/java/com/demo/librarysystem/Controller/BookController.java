@@ -3,6 +3,7 @@ package com.demo.librarysystem.Controller;
 import com.demo.librarysystem.BookService.LibraryServiceImpl;
 import com.demo.librarysystem.ServiceImplementation.DeleteServiceImpl.DeleteService;
 import com.demo.librarysystem.ServiceImplementation.DeleteServiceImpl.DeleteServiceByAuthor;
+import com.demo.librarysystem.ServiceImplementation.GetAllBooks;
 import com.demo.librarysystem.ServiceImplementation.SearchImpl.AuthorService;
 import com.demo.librarysystem.ServiceImplementation.SearchImpl.TitleService;
 import com.demo.librarysystem.ServiceImplementation.SearchImpl.bookIdService;
@@ -19,7 +20,7 @@ public class BookController {
     @GetMapping(value = "/book/{authorName}")
     public List<Map<String, Object>> getBookbyAuthor(@PathVariable("authorName") String authorName) throws SQLException {
         AuthorService authorService = new AuthorService();
-        List<Map<String, Object>> result = authorService.findBook(authorName);
+        List<Map<String, Object>> result = authorService.searchbyAuthor(authorName);
         return result;
     }
 
@@ -31,10 +32,17 @@ public class BookController {
 
     }
 
-    @GetMapping (value = "/title/{titleName}")
-    public List<Map<String, Object>> getBookbyTitle(@PathVariable("titleName") String titleName) throws SQLException {
+    @GetMapping(value = "/title/{titleName}")
+    public List<Map<String, Object>> getBookbyTitle(@PathVariable String titleName) throws SQLException {
         TitleService titleService = new TitleService();
         List<Map<String, Object>> result = titleService.searchbyTitle(titleName);
+        return result;
+    }
+
+    @GetMapping("/")
+    public List<Map<String, Object>> findAll() throws SQLException {
+        GetAllBooks allBooks = new GetAllBooks();
+        List<Map<String, Object>> result = allBooks.getAll();
         return result;
     }
 

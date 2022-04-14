@@ -28,6 +28,7 @@ public class Books {
 
     public void setBookId(int bookId) {
         this.bookId = bookId;
+
     }
 
     public int getBookId() {
@@ -102,7 +103,7 @@ public class Books {
     @Override
     public String toString() {
         return "Books{" +
-
+                " bookId='" + bookId + '\'' +
                 ", author='" + author + '\'' +
                 ", booktitle='" + booktitle + '\'' +
                 ", publishername='" + publishername + '\'' +

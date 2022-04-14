@@ -9,12 +9,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class AuthorService implements LibraryService {
-    Books book;
-
-    public List<Map<String, Object>> findBook(String bookSearch) throws SQLException {
-        List<Map<String, Object>> data = searchbyAuthor(bookSearch);
-        return data;
-    }
 
     @Override
     public void findBooks() throws SQLException {
@@ -31,35 +25,14 @@ public class AuthorService implements LibraryService {
         PreparedStatement pstmt = null;
 
         try {
-            pstmt = conn.prepareStatement("Select * from BookRepository where LOWER(author_name) like  '%'  || LOWER(?) || '%'");
+            pstmt = conn.prepareStatement("Select * from BookRepository where LOWER(author_name) like  '%'  || LOWER(?) || '%'",ResultSet.TYPE_SCROLL_INSENSITIVE);
         }catch (SQLException e){
             e.printStackTrace();
         }
         pstmt.setString(1, bookSearch);
         ResultSet resultSet = pstmt.executeQuery();
-
-        while(resultSet.next()){
-           //    resultSet.updateString("","");
-            int id = resultSet.getInt("book_id");
-            System.out.println(id);
-            book.setBookId(id);
-            int id1 = book.getBookId();
-            System.out.println(id1);
-
-            book.setAuthor(resultSet.getString("author_name"));
-            book.setTitle(resultSet.getString("book_title"));
-            book.setIsbn(resultSet.getInt("book_ISBN"));
-            book.setNoOfPages(resultSet.getInt("book_noofpages"));
-            book.setPublishername(resultSet.getString("Publisher"));
-            book.setPublishedyear(resultSet.getInt("Year_Published"));
-            book.setKey(resultSet.getString("key_search"));
-            book.setGenre(resultSet.getString("Genre"));
-
-        }
-
-
         ConvertJSON convertJSON = new ConvertJSON();
-        List<Map<String, Object>> entities = convertJSON.getResult(resultSet);
+        List<Map<String, Object>> entities = convertJSON.getEntitesfromResultSet(resultSet);
         return entities;
     }
 

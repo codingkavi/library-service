@@ -40,7 +40,7 @@ public class PublisherService implements LibraryService {
         pstmt.setString(1,bookSearch);
         ResultSet rs = pstmt.executeQuery();
         ConvertJSON convertJSON = new ConvertJSON();
-        List<Map<String, Object>> entities = convertJSON.getResult(rs);
+        List<Map<String, Object>> entities = convertJSON.getEntitesfromResultSet(rs);
         return entities;
     }
 }

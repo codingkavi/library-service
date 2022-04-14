@@ -21,7 +21,7 @@ public class ServiceImpl implements findUser {
         preparedStatement.setString(1,lastname);
         ResultSet resultSet = preparedStatement.executeQuery();
         ConvertJSON convertJSON = new ConvertJSON();
-        List<Map<String, Object>> entities= convertJSON.getResult(resultSet);
+        List<Map<String, Object>> entities= convertJSON.getEntitesfromResultSet(resultSet);
         return entities;
     }
     public void deletebyname(String username) throws SQLException {

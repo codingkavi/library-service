@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class bookIdService implements LibraryService {
+
     @Override
     public void findBooks() throws SQLException, JsonProcessingException {
 
@@ -32,7 +33,7 @@ public class bookIdService implements LibraryService {
         pstmt.setInt(1, id);
         ResultSet rs = pstmt.executeQuery();
         ConvertJSON convertJSON = new ConvertJSON();
-        List<Map<String, Object>> entities = convertJSON.getResult(rs);
+        List<Map<String, Object>> entities = convertJSON.getEntitesfromResultSet(rs);
         return entities;
 
     }
