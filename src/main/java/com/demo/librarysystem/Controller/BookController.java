@@ -9,6 +9,7 @@ import com.demo.librarysystem.ServiceImplementation.SearchImpl.AuthorService;
 import com.demo.librarysystem.ServiceImplementation.SearchImpl.TitleService;
 import com.demo.librarysystem.ServiceImplementation.SearchImpl.bookIdService;
 import com.demo.librarysystem.model.Books;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.web.bind.annotation.*;
 import java.sql.SQLException;
 import java.util.List;
@@ -17,29 +18,29 @@ import java.util.Map;
 @RestController("/api")
 public class BookController {
 
-    @GetMapping(value = "/book/{authorName}")
-    public List<Map<String, Object>> getBookbyAuthor(@PathVariable("authorName") String authorName) throws SQLException {
+    //@CrossOrigin("http://localhost:4200")
+    @GetMapping(value = "/api/author/{authorName}")
+    public List<Map<String, Object>> getBookByAuthor(@PathVariable("authorName") String authorName) throws SQLException {
         AuthorService authorService = new AuthorService();
         List<Map<String, Object>> result = authorService.searchbyAuthor(authorName);
         return result;
     }
 
-    @GetMapping(value = "/bookid/{id}")
-    public List<Map<String, Object>> getBookbyId(@PathVariable int id) throws SQLException {
-        bookIdService IdService = new bookIdService();
-        List<Map<String, Object>> result = IdService.searchbyId(id);
+    @GetMapping(value = "/api/book/{id}")
+    public Map<String, Object> getBookById(@PathVariable int id) throws SQLException, JsonProcessingException {
+        bookIdService idService = new bookIdService();
+        Map<String, Object> result = idService.searchById(id);
         return result;
-
     }
 
     @GetMapping(value = "/title/{titleName}")
-    public List<Map<String, Object>> getBookbyTitle(@PathVariable String titleName) throws SQLException {
+    public List<Map<String, Object>> getBookByTitle(@PathVariable String titleName) throws SQLException {
         TitleService titleService = new TitleService();
         List<Map<String, Object>> result = titleService.searchbyTitle(titleName);
         return result;
     }
 
-    @GetMapping("/")
+    @GetMapping("/api/book/all")
     public List<Map<String, Object>> findAll() throws SQLException {
         GetAllBooks allBooks = new GetAllBooks();
         List<Map<String, Object>> result = allBooks.getAll();
@@ -54,24 +55,20 @@ public class BookController {
         return result;
     }
 
-    @PutMapping(value = "/book/update")
+    @PutMapping(value = "/api/book")
     public void update(@RequestBody Books book) throws SQLException {
         System.out.println(book);
         AuthorService authorService = new AuthorService();
         authorService.updateAuthor(book);
-
     }
 
-    @PostMapping(value = "/book")
-    public Books createBook(@RequestBody Books book) throws SQLException {
-
+    @PostMapping(value = "/api/book")
+    public void createBook(@RequestBody Books book) throws SQLException {
         LibraryServiceImpl libraryService = new LibraryServiceImpl();
-        Books result = libraryService.addBook(book);
-        return result;
-
+         libraryService.addBook(book);
     }
 
-    @DeleteMapping("/book/{id}")
+    @DeleteMapping("/api/book/{id}")
     public void deleteByIdAPI(@PathVariable int id) throws SQLException {
         DeleteService deleteService = new DeleteService();
         deleteService.deleteById(id);
@@ -82,9 +79,4 @@ public class BookController {
         deleteService.deleteByAuthor(author);
     }
 
-    @PatchMapping(value ="/{id}")
-    public void saveBook(@PathVariable("bookId") int id,@RequestBody Books book){
-        LibraryServiceImpl libraryService = new LibraryServiceImpl();
-        libraryService.addBook(book);
-    }
 }

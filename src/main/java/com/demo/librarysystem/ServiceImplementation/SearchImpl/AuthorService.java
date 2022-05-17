@@ -40,12 +40,18 @@ public class AuthorService implements LibraryService {
         ConnectDao dao = new ConnectDao();
         Connection conn = dao.connect();
         PreparedStatement preparedStatement ;
-        preparedStatement = conn.prepareStatement("Update BookRepository SET author_name = ? ,book_title = ? where book_id = ?");
+        preparedStatement = conn.prepareStatement("Update BookRepository SET author_name = ? ,book_title = ? ,book_ISBN = ? , book_noofpages = ? ,Publisher = ?,Year_Published = ? ,key_search = ? ,Genre = ? where book_id = ?");
         preparedStatement.setString(1, book.getAuthor());
         System.out.println(book.getAuthor());
         preparedStatement.setString(2,book.getTitle());
         System.out.println(book.getTitle());
-        preparedStatement.setInt(3,book.getBookId());
+        preparedStatement.setInt(3,book.getIsbn());
+        preparedStatement.setInt(4,book.getNoOfPages());
+        preparedStatement.setString(5, book.getPublisherName());
+        preparedStatement.setInt(6,book.getPublishedYear());
+        preparedStatement.setString(7, book.getKey());
+        preparedStatement.setString(8, book.getGenre());
+        preparedStatement.setInt(9,book.getBookId());
         int count = preparedStatement.executeUpdate();
         System.out.println(count + " rows updated");
     }

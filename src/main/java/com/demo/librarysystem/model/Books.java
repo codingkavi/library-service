@@ -5,8 +5,8 @@ public class Books {
     int bookId;
     String author;
     String title;
-    String publishername;
-    int publishedyear;
+    String publisherName;
+    int publishedYear;
     int isbn;
     int noOfPages;
     String key;
@@ -14,15 +14,15 @@ public class Books {
 
     public Books() {}
 
-    public Books(String author, String title, int isbn, int noOfPages,String key,String publishername, int publishedyear,String genre) {
+    public Books(String author, String title, int isbn, int noOfPages,String key,String publisherName, int publishedYear,String genre) {
 
         this.author = author;
         this.title = title;
         this.isbn = isbn;
         this.noOfPages = noOfPages;
         this.key = key;
-        this.publishername = publishername;
-        this.publishedyear = publishedyear;
+        this.publisherName = publisherName;
+        this.publishedYear = publishedYear;
         this.genre = genre;
     }
 
@@ -75,20 +75,20 @@ public class Books {
         this.key = key;
     }
 
-    public String getPublishername() {
-        return publishername;
+    public String getPublisherName() {
+        return publisherName;
     }
 
-    public void setPublishername(String publishername) {
-        this.publishername = publishername;
+    public void setPublisherName(String publisherName) {
+        this.publisherName = publisherName;
     }
 
-    public int getPublishedyear() {
-        return publishedyear;
+    public int getPublishedYear() {
+        return publishedYear;
     }
 
-    public void setPublishedyear(int publishedyear) {
-        this.publishedyear = publishedyear;
+    public void setPublishedYear(int publishedYear) {
+        this.publishedYear = publishedYear;
     }
 
     public String getGenre() {
@@ -106,8 +106,8 @@ public class Books {
                 " bookId='" + bookId + '\'' +
                 ", author='" + author + '\'' +
                 ", title='" + title + '\'' +
-                ", publishername='" + publishername + '\'' +
-                ", publishedyear=" + publishedyear +
+                ", publisherName='" + publisherName + '\'' +
+                ", publishedYear=" + publishedYear +
                 ", isbn=" + isbn +
                 ", noOfPages=" + noOfPages +
                 ", key='" + key + '\'' +

@@ -1,7 +1,6 @@
 package com.demo.librarysystem.util;
 
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -20,17 +19,17 @@ public class ConvertJSON {
     }
    
     public Map<String, Object> getEntityfromResultset(ResultSet resultSet) throws SQLException{
-
+        System.out.println(resultSet.getString("author_name"));
         Map<String,Object> resultsMap = new HashMap<>();
-         resultsMap.put("BookId", resultSet.getInt("book_id"));
-         resultsMap.put("Author", resultSet.getString("author_name"));
-         resultsMap.put("Title", resultSet.getString("book_title"));
-         resultsMap.put("Isbn", resultSet.getInt("book_ISBN"));
-         resultsMap.put("NoOfPages", resultSet.getInt("book_noofpages"));
-         resultsMap.put("Publishername", resultSet.getString("Publisher"));
-         resultsMap.put("Publishedyear", resultSet.getInt("Year_Published"));
-         resultsMap.put("Key", resultSet.getString("key_search"));
-         resultsMap.put("Genre", resultSet.getString("Genre"));
+         resultsMap.put("bookId", resultSet.getInt("book_id"));
+         resultsMap.put("author", resultSet.getString("author_name"));
+         resultsMap.put("title", resultSet.getString("book_title"));
+         resultsMap.put("isbn", resultSet.getInt("book_ISBN"));
+         resultsMap.put("noOfPages", resultSet.getInt("book_noofpages"));
+         resultsMap.put("publisherName", resultSet.getString("Publisher"));
+         resultsMap.put("publishedYear", resultSet.getInt("Year_Published"));
+         resultsMap.put("key", resultSet.getString("key_search"));
+         resultsMap.put("genre", resultSet.getString("Genre"));
          return resultsMap;
     }
 }

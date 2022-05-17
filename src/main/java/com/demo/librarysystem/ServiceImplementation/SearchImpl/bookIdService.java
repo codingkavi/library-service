@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Map;
 
 public class bookIdService implements LibraryService {
@@ -18,8 +17,8 @@ public class bookIdService implements LibraryService {
 
     }
 
-    public List<Map<String, Object>> searchbyId(int id) throws SQLException {
-        System.out.println(id);
+    public Map<String, Object> searchById(int id) throws SQLException {
+
         ConnectDao dao = new ConnectDao();
         Connection conn = dao.connect();
         PreparedStatement pstmt = null;
@@ -32,9 +31,10 @@ public class bookIdService implements LibraryService {
 
         pstmt.setInt(1, id);
         ResultSet rs = pstmt.executeQuery();
+
         ConvertJSON convertJSON = new ConvertJSON();
-        List<Map<String, Object>> entities = convertJSON.getEntitesfromResultSet(rs);
-        return entities;
+        Map<String, Object> entity =  convertJSON.getEntityfromResultset(rs);
+        return entity;
 
     }
 }
