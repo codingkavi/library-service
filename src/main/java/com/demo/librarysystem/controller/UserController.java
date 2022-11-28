@@ -1,7 +1,7 @@
-package com.demo.librarysystem.Controller;
+package com.demo.librarysystem.controller;
 
 
-import com.demo.librarysystem.UserService.SearchUser.ServiceImpl;
+import com.demo.librarysystem.UserService.ServiceImpl;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,10 +15,10 @@ import java.util.Map;
 public class UserController {
 
     @GetMapping("/user/{lastname}")
-    public List<Map<String, Object>> find(@PathVariable String lastname) throws SQLException {
+    public void find(@PathVariable String lastname) throws SQLException {
         ServiceImpl findName = new ServiceImpl();
-        List<Map<String, Object>> result =  findName.findByLastname(lastname);
-        return result;
+          findName.findByLastname(lastname);
+
     }
 
     @DeleteMapping("/user/{username}")

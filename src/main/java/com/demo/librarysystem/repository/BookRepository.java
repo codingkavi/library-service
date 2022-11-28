@@ -26,6 +26,8 @@ public class BookRepository {
     @Column(name = "Genre")
     private String genre;
 
+    public BookRepository(){}
+
     public BookRepository(String author, String title, int ISBN, int noOfPages, String key, String publishername, int publishedyear, String genre){
 
 

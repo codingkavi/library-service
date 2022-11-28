@@ -6,6 +6,6 @@ import java.util.Map;
 
 public interface findUser {
 
-    List<Map<String, Object>> findByLastname(String lastname) throws SQLException;
+     void findByLastname(String lastname) throws SQLException;
 
 }

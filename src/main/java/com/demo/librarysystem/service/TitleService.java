@@ -1,8 +1,11 @@
-package com.demo.librarysystem.ServiceImplementation.SearchImpl;
+package com.demo.librarysystem.service;
 
 import com.demo.librarysystem.BookService.LibraryService;
 import com.demo.librarysystem.repository.ConnectDao;
+import com.demo.librarysystem.util.ConvertDB;
 import com.demo.librarysystem.util.ConvertJSON;
+
+import java.io.IOException;
 import java.sql.*;
 import java.util.List;
 import java.util.Map;
@@ -12,20 +15,17 @@ public class TitleService implements LibraryService {
 
     @Override
     public void findBooks()  {
-
         Scanner input = new Scanner(System.in);
         System.out.println("Enter a Title to search : ");
         String bookSearch = input.nextLine();
         try {
             searchbyTitle(bookSearch);
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
     }
 
-
-
-    public List<Map<String, Object>> searchbyTitle(String bookSearch) throws SQLException,NullPointerException {
+    public void searchbyTitle(String bookSearch) throws SQLException, NullPointerException, IOException {
 
         ConnectDao dao = new ConnectDao();
         Connection conn = dao.connect();
@@ -38,8 +38,8 @@ public class TitleService implements LibraryService {
         pstmt.setString(1,  bookSearch);
 
         ResultSet rs = pstmt.executeQuery();
-        ConvertJSON convertJSON = new ConvertJSON();
-        List<Map<String, Object>> entities = convertJSON.getEntitesfromResultSet(rs);
-        return entities;
+        ConvertDB c = new ConvertDB();
+        c.convert(rs);
+
     }
 }

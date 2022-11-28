@@ -1,6 +1,8 @@
 package com.demo.librarysystem.util;
 
+
 import com.demo.librarysystem.repository.BookRepository;
+import com.demo.librarysystem.repository.EventRepository;
 import com.demo.librarysystem.repository.UserAccountRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,7 +16,9 @@ public class HibernateConfig {
 
         Configuration con = new Configuration().configure("hibernate.xml")
                 .addAnnotatedClass(UserAccountRepository.class)
-                .addAnnotatedClass(BookRepository.class);
+                .addAnnotatedClass(BookRepository.class)
+                .addAnnotatedClass(EventRepository.class);
+
 
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(con.getProperties())

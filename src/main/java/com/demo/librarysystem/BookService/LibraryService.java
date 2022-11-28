@@ -8,5 +8,6 @@ import java.sql.SQLException;
 public interface LibraryService {
 
     void findBooks() throws SQLException, JsonProcessingException;
+
 }
 

@@ -1,13 +1,16 @@
-package com.demo.librarysystem.ServiceImplementation.SearchImpl;
+package com.demo.librarysystem.service;
 
 import com.demo.librarysystem.BookService.LibraryService;
 import com.demo.librarysystem.repository.ConnectDao;
 import com.demo.librarysystem.util.ConvertJSON;
 import com.fasterxml.jackson.core.JsonProcessingException;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 public class bookIdService implements LibraryService {
@@ -17,7 +20,7 @@ public class bookIdService implements LibraryService {
 
     }
 
-    public Map<String, Object> searchById(int id) throws SQLException {
+    public List<Map<String,Object>> searchById(int id) throws SQLException, IOException {
 
         ConnectDao dao = new ConnectDao();
         Connection conn = dao.connect();
@@ -33,9 +36,11 @@ public class bookIdService implements LibraryService {
         ResultSet rs = pstmt.executeQuery();
 
         ConvertJSON convertJSON = new ConvertJSON();
-        Map<String, Object> entity =  convertJSON.getEntityfromResultset(rs);
-        return entity;
+       List<Map<String, Object>> entities = convertJSON.getEntitesfromResultSet(rs);
+        return  entities;
 
-    }
+       /* ConvertDB c = new ConvertDB();
+        c.convert(rs);*/
+        }
 }
 

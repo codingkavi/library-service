@@ -1,6 +1,5 @@
-package com.demo.librarysystem.BookService;
+package com.demo.librarysystem.service;
 
-import com.demo.librarysystem.ServiceImplementation.GetAllBooks;
 import com.demo.librarysystem.model.Books;
 import com.demo.librarysystem.repository.BookRepository;
 import com.demo.librarysystem.util.HibernateConfig;
@@ -15,7 +14,7 @@ import java.util.Iterator;
 public class LibraryServiceImpl {
 
     Session session;
-    ResultSet resultSet;
+
 
     public LibraryServiceImpl() {
 
@@ -39,7 +38,7 @@ public class LibraryServiceImpl {
         }
     }
 
-    public void addBook(Books book) throws SQLException {
+    public void addBook(Books book) {
         System.out.println(book);
         BookRepository bookRepository = new BookRepository(book.getAuthor(), book.getTitle(), book.getIsbn(), book.getNoOfPages(), book.getKey(), book.getPublisherName(), book.getPublishedYear(), book.getGenre());
         session.beginTransaction();

@@ -11,8 +11,9 @@
         <!--property name="connection.password"> </property>-->
         <!-- JDBC connection pool settings ... using built-in test pool -->
         <property name="connection.pool_size">1</property>
-        <!-- Select our SQL dialect -->
-        <property name="hbm2ddl.auto">update</property>
+             <!--To create table -->
+        <property name="hbm2ddl.auto">create</property>
+        <!-- Select our SQL dialect / to generate queries-->
         <property name="dialect">org.hibernate.dialect.H2Dialect</property>
 
 
@@ -22,9 +23,7 @@
         <!-- Set the current session context -->
         <property name="current_session_context_class">thread</property>
 
-        <mapping resource="hibernate.xml" />
-        <mapping class="com.demo.librarysystem.repository.BookRepository" />
-        <mapping class="com.demo.librarysystem.repository.UserAccountRepository" />
+
 
     </session-factory>
 </hibernate-configuration>

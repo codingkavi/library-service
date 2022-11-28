@@ -1,4 +1,4 @@
-package com.demo.librarysystem.ServiceImplementation.SearchImpl;
+package com.demo.librarysystem.service;
 import com.demo.librarysystem.BookService.LibraryService;
 import com.demo.librarysystem.repository.ConnectDao;
 import com.demo.librarysystem.util.ConvertJSON;
@@ -26,7 +26,7 @@ public class KeywordService implements LibraryService {
         }
 
     }
-    public List<Map<String, Object>> keySearch(String keyword) throws SQLException,NullPointerException {
+    public void keySearch(String keyword) throws SQLException,NullPointerException {
 
         ConnectDao dao = new ConnectDao();
         Connection conn = dao.connect();
@@ -40,9 +40,7 @@ public class KeywordService implements LibraryService {
 
         pstmt.setString(1,  keyword);
         ResultSet rs = pstmt.executeQuery();
-        ConvertJSON convertJSON = new ConvertJSON();
-        List<Map<String, Object>> entities = convertJSON.getEntitesfromResultSet(rs);
-        return entities;
+
 
     }
 }

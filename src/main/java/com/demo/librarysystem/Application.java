@@ -1,30 +1,34 @@
 package com.demo.librarysystem;
 
-import com.demo.librarysystem.BookService.LibraryServiceImpl;
+import com.demo.librarysystem.service.LibraryServiceImpl;
 import com.demo.librarysystem.UserService.UserServiceImpl;
-import com.demo.librarysystem.ServiceImplementation.SearchImpl.*;
 import com.demo.librarysystem.Validations.PhoneValidation;
 import com.demo.librarysystem.model.Books;
 import com.demo.librarysystem.model.Users;
 import com.demo.librarysystem.BookService.LibraryService;
 import com.demo.librarysystem.UserService.Login;
+import com.demo.librarysystem.service.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
-@SpringBootApplication
+
+
+@SpringBootApplication(exclude = { SecurityAutoConfiguration.class } )
 
 //@ComponentScan("LibraryServ.class")
 public class Application {
+
 
     public static void main(String[] args) throws SQLException, JsonProcessingException {
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
 
 
+       // createEvent();
         //createBooks();
         //createUsers();
 
@@ -98,7 +102,7 @@ public class Application {
                     break;
                 case 11:
                     AuthorService authorService = new AuthorService();
-                    //authorService.updateAuthor(int );
+
 
                 default:
                     System.out.println("Wrong option,try again");
@@ -136,8 +140,6 @@ public class Application {
 
         LibraryServiceImpl libraryService = new LibraryServiceImpl();
         libraryService.addBooks(booksList);
-
-
     }
 
     private static void createUsers() {
@@ -162,4 +164,62 @@ public class Application {
         userService.addUser(usersDetails);
     }
 
+
+    public static void createEvent(){
+
+        /*ArrayList<Event> events = new ArrayList<>();
+        Event event1 =  new Event(1L,"Alpharetta Branch","Adults","Author Talks","Hispanic Heritage Month","English");
+        Event event2 = new Event(2L,"Adams Park Branch","Birth to Five","Book Clubs","Homework Help","Hispanic");
+        Event event3 = new Event(3L,"Milton Branch","Kids","Business & Careers","Reading Challenge","English");
+        events.add(event1);
+        events.add(event2);
+        events.add(event3);
+
+        EventServiceImpl service = new EventServiceImpl();
+        service.saveEvent(events);*/
+
+        Map<String,ArrayList<String>> locations = new HashMap<>();
+        locations.put("Location", new ArrayList<>());
+        locations.get("Location").add("Alpharetta Branch");
+        locations.get("Location").add("Adams Park Branch");
+        locations.get("Location").add("Milton Branch");
+        System.out.println(locations);
+
+
+        Map<String,ArrayList<String>> audiences = new HashMap<>();
+        audiences.put("Audience", new ArrayList<>());
+        audiences.get("Audience").add("Adults");
+        audiences.get("Audience").add("Birth to Five");
+        audiences.get("Audience").add("Kids");
+        audiences.get("Audience").add("Teens");
+        System.out.println(audiences);
+
+        Map<String,ArrayList<String>> eventTypes = new HashMap<>();
+        eventTypes.put("EventType",new ArrayList<>());
+        eventTypes.get("EventType").add("Author Talks");
+        eventTypes.get("EventType").add("Book Clubs");
+        eventTypes.get("EventType").add("Business & Careers");
+        eventTypes.get("EventType").add("Board of Trustees");
+        System.out.println(eventTypes);
+
+
+
+
+        Map<String,ArrayList<String>> programs = new HashMap<>();
+        programs.put("Programs", new ArrayList<>());
+        programs.get("Programs").add("Hispanic Heritage Month");
+        programs.get("Programs").add("Homework Help");
+        programs.get("Programs").add("Reading Challenge");
+        programs.get("Programs").add("Summer Reading Program");
+
+
+        System.out.println(programs);
+
+        Map<String,ArrayList<String>> languages = new HashMap<>();
+        languages.put("Languages",new ArrayList<>());
+        languages.get("Languages").add("English");
+        languages.get("Languages").add("Hispanic");
+        System.out.println(languages);
+
+    }
 }
